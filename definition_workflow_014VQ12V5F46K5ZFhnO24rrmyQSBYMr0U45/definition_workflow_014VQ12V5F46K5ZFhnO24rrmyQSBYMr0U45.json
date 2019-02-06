@@ -1,0 +1,113 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_014VQ12V5F46K5ZFhnO24rrmyQSBYMr0U45",
+    "name": "RK-CC-Activity-Test",
+    "title": "RK-CC-Activity-Test",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "1",
+          "scope": "local",
+          "name": "CC_RUN_ID",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_014VQ4QSYIRSI714A9vQamMpYX7Y5RF6fND",
+        "object_type": "variable_workflow"
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "depends_on": "CC",
+      "display_name": "RK-CC-Activity-Test",
+      "favorite": false,
+      "target": {
+        "target_type": "ccsuite.endpoint",
+        "target_id": "definition_target_01gYFCPKrBtZP9YTDJCzmOY4Jl9Fub0mZ",
+        "execute_on_workflow_target": true
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_014VQ1U66M75X6yLKAOiVlrcx5L1FBXRmpV",
+        "name": "Get Workload Manager Context",
+        "title": "Get Workload Manager Context",
+        "type": "ccs.get_cloud_context",
+        "base_type": "activity",
+        "properties": {
+          "action_id": "101",
+          "action_timeout": 180,
+          "cc_configuration": {
+            "execute_action": "on_vm",
+            "reboot_vm": false,
+            "resource_mappings": [
+              {
+                "applied_to": {
+                  "service": [
+                    {
+                      "id": "43",
+                      "name": "CentOS"
+                    }
+                  ]
+                },
+                "resource_type": "service"
+              }
+            ],
+            "sync_vm": false,
+            "wf_availability_type": "lifecycle"
+          },
+          "cc_run_id": "$workflow.definition_workflow_014VQ12V5F46K5ZFhnO24rrmyQSBYMr0U45.local.variable_workflow_014VQ4QSYIRSI714A9vQamMpYX7Y5RF6fND$",
+          "continue_on_failure": false,
+          "display_name": "Get Workload Manager Context",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "target": {
+            "override_workflow_target": false,
+            "use_workflow_target": true
+          }
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  },
+  "targets": {
+    "definition_target_01gYFCPKrBtZP9YTDJCzmOY4Jl9Fub0mZ": {
+      "unique_name": "definition_target_01gYFCPKrBtZP9YTDJCzmOY4Jl9Fub0mZ",
+      "name": "dev_vj_CC_Target( 35.185.117.116 )",
+      "title": "dev_vj_CC_Target( 35.185.117.116 )",
+      "type": "ccsuite.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "default_runtime_user_id": "definition_runtime_user_01gYF4PmkjFAEUYQdfHNvymE8nh0YwBjL",
+        "display_name": "dev_vj_CC_Target( 35.185.117.116 )",
+        "host": "35.185.117.116",
+        "protocol": "https"
+      }
+    }
+  },
+  "runtime_users": {
+    "definition_runtime_user_01gYF4PmkjFAEUYQdfHNvymE8nh0YwBjL": {
+      "unique_name": "definition_runtime_user_01gYF4PmkjFAEUYQdfHNvymE8nh0YwBjL",
+      "name": "dev_vj_CC_accokut_key",
+      "title": "dev_vj_CC_accokut_key",
+      "type": "runtime_user.ccs_explicit_user",
+      "base_type": "runtime_user",
+      "object_type": "definition_runtime_user",
+      "properties": {
+        "display_name": "dev_vj_CC_accokut_key"
+      }
+    }
+  }
+}
