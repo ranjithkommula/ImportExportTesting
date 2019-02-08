@@ -1,0 +1,204 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_014VR64KJRULG1ezmkibsZezl34NG5ACFNv",
+    "name": "parent NEXTG-10803",
+    "title": "parent NEXTG-10803",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": null,
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "display_name": "parent NEXTG-10803",
+      "favorite": false,
+      "target": {
+        "execute_on_target_group": false,
+        "execute_on_workflow_target": false,
+        "no_target": true,
+        "specify_on_workflow_start": false
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_014VRI108QLJ22ktaBZhnPtSUCAlorVurid",
+        "name": "child NEXTG-10803",
+        "title": "child NEXTG-10803",
+        "type": "workflow.sub_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "child NEXTG-10803",
+          "input": {},
+          "target": {
+            "no_target": true,
+            "override_workflow_target": false
+          },
+          "workflow_id": "definition_workflow_014VR9V46AV2L2LM8SSDQlEcOl71L23KZyY"
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  },
+  "variables": {
+    "variable_014VPDR2Q84VF3IcSzBm8Ov1zcTwxQpSck3": {
+      "unique_name": "variable_014VPDR2Q84VF3IcSzBm8Ov1zcTwxQpSck3",
+      "schema_id": "tabletype_014VPDBKTQ7HU2bL2zMEewOVci0n9KO7eh0",
+      "properties": {
+        "value": [
+          {
+            "column_data": {
+              "id": 88,
+              "name": ""
+            }
+          },
+          {
+            "column_data": {
+              "id": 55
+            }
+          },
+          {
+            "column_data": {
+              "id": 11,
+              "name": "name"
+            }
+          },
+          {
+            "column_data": {
+              "id": 11,
+              "name": "name"
+            }
+          },
+          {
+            "column_data": {
+              "id": 11,
+              "name": "name"
+            }
+          }
+        ],
+        "scope": "global",
+        "name": "ah table var",
+        "type": "datatype.table"
+      },
+      "object_type": "variable"
+    }
+  },
+  "table_types": {
+    "tabletype_014VPDBKTQ7HU2bL2zMEewOVci0n9KO7eh0": {
+      "unique_name": "tabletype_014VPDBKTQ7HU2bL2zMEewOVci0n9KO7eh0",
+      "data_type": "datatype.tabletype",
+      "display_name": "ah tab type",
+      "max_rows": 256,
+      "max_columns": 256,
+      "max_column_size": 1024,
+      "max_table_size": 26000,
+      "columns": [
+        {
+          "name": "name",
+          "title": "name",
+          "type": "string"
+        },
+        {
+          "minimum": 10,
+          "name": "id",
+          "title": "id",
+          "type": "integer"
+        }
+      ],
+      "base_type": "datatype",
+      "object_type": "tabletype"
+    }
+  },
+  "subworkflows": [
+    {
+      "workflow": {
+        "unique_name": "definition_workflow_014VR9V46AV2L2LM8SSDQlEcOl71L23KZyY",
+        "name": "child NEXTG-10803",
+        "title": "child NEXTG-10803",
+        "type": "generic.workflow",
+        "base_type": "workflow",
+        "variables": [
+          {
+            "schema_id": "tabletype_014VPDBKTQ7HU2bL2zMEewOVci0n9KO7eh0",
+            "properties": {
+              "scope": "output",
+              "name": "out table",
+              "type": "datatype.table"
+            },
+            "unique_name": "variable_workflow_014VRDBVVO41Z4e70Kq5gSz6wex8BVCFApo",
+            "object_type": "variable_workflow"
+          }
+        ],
+        "properties": {
+          "atomic": {
+            "is_atomic": false
+          },
+          "delete_workflow_instance": false,
+          "display_name": "child NEXTG-10803",
+          "favorite": false,
+          "target": {
+            "execute_on_target_group": false,
+            "execute_on_workflow_target": false,
+            "no_target": true,
+            "specify_on_workflow_start": false
+          }
+        },
+        "object_type": "definition_workflow",
+        "actions": [
+          {
+            "unique_name": "definition_activity_014VRDJVUNY8C5q1U3bekwROHGXI61q86Ro",
+            "name": "Add Row to Table",
+            "title": "Add Row to Table",
+            "type": "core.addrowtotable",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "continue_on_failure": false,
+              "display_name": "Add Row to Table",
+              "input_table": "$global.variable_014VPDR2Q84VF3IcSzBm8Ov1zcTwxQpSck3.global.variable_014VPDR2Q84VF3IcSzBm8Ov1zcTwxQpSck3$",
+              "row": [
+                {
+                  "key": "name",
+                  "type": "string",
+                  "value": "name"
+                },
+                {
+                  "key": "id",
+                  "type": "integer",
+                  "value": 11
+                }
+              ]
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_014VRK53FGP1K56gHRlki9OAootmEu62J72",
+            "name": "Set Variables",
+            "title": "Set Variables",
+            "type": "core.set_multiple_variables",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Set Variables",
+              "variables_to_update": [
+                {
+                  "variable_to_update": "$workflow.definition_workflow_014VR9V46AV2L2LM8SSDQlEcOl71L23KZyY.output.variable_workflow_014VRDBVVO41Z4e70Kq5gSz6wex8BVCFApo$",
+                  "variable_value_new": "$global.variable_014VPDR2Q84VF3IcSzBm8Ov1zcTwxQpSck3.global.variable_014VPDR2Q84VF3IcSzBm8Ov1zcTwxQpSck3$"
+                }
+              ]
+            },
+            "object_type": "definition_activity"
+          }
+        ],
+        "categories": [
+          "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+        ]
+      }
+    }
+  ]
+}
