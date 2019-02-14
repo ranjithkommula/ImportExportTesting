@@ -1,0 +1,141 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_0150OWVHMHNZW214bz13TbXRC8pVd9LiIOj",
+    "name": "demo-lifecycle-onvm",
+    "title": "demo-lifecycle-onvm",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "CC_RUN_ID",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_0150OXT5MORTJ5wkyA72RsafO8nzb6htCry",
+        "object_type": "variable_workflow"
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "depends_on": "CC",
+      "display_name": "demo-lifecycle-onvm",
+      "favorite": false,
+      "target": {
+        "target_type": "ccsuite.integration_endpoint",
+        "target_id": "definition_target_01f9IQgvQRJv3tvlqwR145Bbrye0toH0Q",
+        "execute_on_workflow_target": true
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_0150OXJENH8ZZ407cw7T0l4YeRmlMmoUhoB",
+        "name": "Get Workload Manager Context",
+        "title": "Get Workload Manager Context",
+        "type": "ccs.get_cloud_context",
+        "base_type": "activity",
+        "properties": {
+          "action_id": "51",
+          "action_timeout": 180,
+          "cc_configuration": {
+            "execute_action": "on_vm",
+            "reboot_vm": false,
+            "resource_mappings": [
+              {
+                "applied_to": {
+                  "app_ids": [
+                    {
+                      "id": "29",
+                      "name": "Demo_Centos-"
+                    }
+                  ]
+                },
+                "resource_type": "app_profile",
+                "resource_type_meta_info": {
+                  "app_profile": {
+                    "app_ids": "All"
+                  }
+                }
+              }
+            ],
+            "sync_vm": false,
+            "wf_availability_type": "lifecycle"
+          },
+          "cc_run_id": "$workflow.definition_workflow_0150OWVHMHNZW214bz13TbXRC8pVd9LiIOj.input.variable_workflow_0150OXT5MORTJ5wkyA72RsafO8nzb6htCry$",
+          "continue_on_failure": false,
+          "display_name": "Get Workload Manager Context",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "target": {
+            "override_workflow_target": true,
+            "target_id": "definition_target_01f9IQgvQRJv3tvlqwR145Bbrye0toH0Q"
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_0150OZAA5NYVQ1qB7SDOGuOpHEjJQ39n6M5",
+        "name": "Execute Action on Virtual Machine",
+        "title": "Execute Action on Virtual Machine",
+        "type": "workflow.atomic_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Execute Action on Virtual Machine",
+          "input": {
+            "variable_workflow_01gYxTTIiozpeC0G7XGX3h938xWZW4k92": "$activity.definition_activity_0150OXJENH8ZZ407cw7T0l4YeRmlMmoUhoB.output.action_type$",
+            "variable_workflow_01gmGB1E79m7TfL8YMDUFjfBqxcIAKSbf": "$activity.definition_activity_0150OXJENH8ZZ407cw7T0l4YeRmlMmoUhoB.output.response_body$",
+            "variable_workflow_01gmT7gkCb94ey8Tqd849LGeJvdfmsYrq": 10,
+            "variable_workflow_01gmUjEx0Z3LZOPK3u01H2tmZyv1QIFk6": 30,
+            "variable_workflow_01gmdByUB9aPy15xbtjYiwCkddwX9OXBD": "$workflow.definition_workflow_0150OWVHMHNZW214bz13TbXRC8pVd9LiIOj.input.variable_workflow_0150OXT5MORTJ5wkyA72RsafO8nzb6htCry$",
+            "variable_workflow_01gmgK3LkOa8JMelklBT5K2eV29ZlPpqv": "touch /tmp/ao1",
+            "variable_workflow_01grKo0w9ERN4QuKLJ3qgU5yoPCsn8CgI": "Suite Internal Target"
+          },
+          "target": {
+            "execute_on_this_target_group": true,
+            "target_group_id": "target_group_01grjYGXnAlH7hYFqQwJCEPBTKItsKq0I"
+          },
+          "workflow_id": "definition_workflow_01gD85jbeDkSP5TO2AYeuvkAJkbgBWyhY"
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  },
+  "target_groups": {
+    "target_group_01grjYGXnAlH7hYFqQwJCEPBTKItsKq0I": {
+      "unique_name": "target_group_01grjYGXnAlH7hYFqQwJCEPBTKItsKq0I",
+      "name": "CCS Target Group",
+      "title": "CCS Target Group",
+      "type": "generic.target_group",
+      "base_type": "target_group",
+      "version": "1.0.0",
+      "targets": [
+        {
+          "data_target_type": "ccsuite.endpoint",
+          "view_target_type": "ccsuite.endpoint",
+          "include_all_targets": true
+        },
+        {
+          "data_target_type": "ccsuite.integration_endpoint",
+          "view_target_type": "ccsuite.integration_endpoint",
+          "include_all_targets": true
+        }
+      ],
+      "object_type": "target_group"
+    }
+  },
+  "atomic_workflows": [
+    "definition_workflow_01gD85jbeDkSP5TO2AYeuvkAJkbgBWyhY"
+  ]
+}
