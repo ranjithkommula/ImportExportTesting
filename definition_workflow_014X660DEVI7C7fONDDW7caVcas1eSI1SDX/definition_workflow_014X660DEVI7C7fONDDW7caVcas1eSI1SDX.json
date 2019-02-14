@@ -1,0 +1,598 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_014X660DEVI7C7fONDDW7caVcas1eSI1SDX",
+    "name": "Execute Action on Virtual Machine",
+    "title": "Execute Action on Virtual Machine",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "Script",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_014X6619VIEF15nOv19bLbjhZ3omnTT6xnR",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.integer",
+        "properties": {
+          "value": 30,
+          "scope": "input",
+          "name": "Sleep Time (Seconds)",
+          "type": "datatype.integer"
+        },
+        "unique_name": "variable_workflow_014X6619VHWW06cgAGJIufCDHaGBd2JEZXI",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "{\"id\":\"29\",\"resource\":\"https://35.202.20.11/cloudcenter-ccm-backend/api/v1/virtualMachines/29\",\"perms\":[\"administration\",\"write\",\"read\",\"delete\"],\"type\":\"DEPLOYMENT_VM\",\"inventoryResourceId\":\"5c5081660474a40ee9edfbf8\",\"nodeId\":\"i-057dd7bd0fbe7bc57\",\"name\":\"i-057dd7bd0fbe7bc57\",\"hostName\":\"ec2-52-66-255-82.ap-south-1.compute.amazonaws.com\",\"approvalRequestStatus\":\"\",\"approvalRequestAction\":\"\",\"nodeStartTime\":1548779832757,\"nodeEndTime\":0,\"numberOfCpus\":0,\"memorySize\":0,\"memoryUnit\":\"MB\",\"storageSize\":null,\"storageUnit\":\"GB\",\"osName\":\"centos\",\"osType\":\"Linux\",\"osVersion\":\"7.4.1708\",\"costPerHour\":0.0,\"currencyCode\":\"USD\",\"status\":\"Running\",\"nodeStatus\":\"NodeReady\",\"reviewNodeStatus\":false,\"cloudFamily\":\"Amazon\",\"cloudId\":\"1\",\"cloudName\":\"Amazon\",\"cloudAccountId\":\"1\",\"cloudAccountName\":\"Gaurav\",\"regionId\":\"2\",\"regionName\":\"Amazon-ap-south-1\",\"regionDisplayName\":\"Asia Pacific (Mumbai)\",\"tenantId\":\"1\",\"userId\":\"1\",\"firstName\":\"Gaurav\",\"lastName\":\"Sharma\",\"email\":\"gsharma6@cisco.com\",\"instanceTypeId\":null,\"instanceTypeName\":null,\"instanceCost\":0.0,\"nics\":[{\"name\":\"vpc-19d27c70\",\"networkDisplayName\":\"vpc-19d27c70\",\"publicIpAddress\":\"52.66.255.82\",\"privateIpAddresses\":[{\"ipAddress\":\"172.31.0.8\",\"protocol\":\"IPV4\"}],\"index\":0}],\"metadata\":[],\"nodeProperties\":[],\"securityGroups\":[],\"networkInterfaceAttachments\":[],\"volumeAttachments\":[],\"actions\":[{\"id\":\"45\",\"resource\":null,\"name\":\"Connect\",\"description\":\"Connect\",\"actionType\":\"SSH_VNC\",\"category\":\"ON_DEMAND\",\"lastUpdatedTime\":\"2019-01-11 13:05:30.557985\",\"timeOut\":999999999999999999,\"enabled\":true,\"encrypted\":false,\"deleted\":false,\"systemDefined\":true,\"bulkOperationSupported\":true,\"isAvailableToUser\":true,\"currentlyExecuting\":false,\"owner\":1,\"actionParameters\":[],\"actionResourceMappings\":[{\"type\":\"VIRTUAL_MACHINE\",\"actionResourceFilters\":[{\"cloudRegionResource\":null,\"serviceResource\":null,\"applicationProfileResource\":null,\"deploymentResource\":null,\"vmResource\":{\"type\":\"DEPLOYMENT_VM\",\"appProfiles\":[],\"cloudRegions\":[],\"cloudAccounts\":[],\"services\":[],\"osTypes\":[],\"cloudFamilyNames\":[],\"nodeStates\":[],\"cloudResourceMappings\":[{\"cloudFamily\":\"all\",\"nodeStates\":[\"NodeReady\",\"NodeStarted\"]}]},\"isEditable\":true}]}],\"actionResourceMappingAncillaries\":[],\"actionCustomParamSpecs\":[]},{\"id\":\"5\",\"resource\":null,\"name\":\"Create And Attach Volume\",\"description\":\"create and attach volume\",\"actionType\":\"INSTANCE_CREATE_ATTACH_VOLUME\",\"category\":\"ON_DEMAND\",\"lastUpdatedTime\":\"\",\"timeOut\":600,\"enabled\":true,\"encrypted\":false,\"deleted\":false,\"systemDefined\":true,\"bulkOperationSupported\":false,\"isAvailableToUser\":true,\"currentlyExecuting\":false,\"owner\":1,\"actionParameters\":[],\"actionResourceMappings\":[{\"type\":\"VIRTUAL_MACHINE\",\"actionResourceFilters\":[{\"cloudRegionResource\":null,\"serviceResource\":null,\"applicationProfileResource\":null,\"deploymentResource\":null,\"vmResource\":{\"type\":\"DEPLOYMENT_VM\",\"appProfiles\":[],\"cloudRegions\":[],\"cloudAccounts\":[],\"services\":[],\"osTypes\":[],\"cloudFamilyNames\":[],\"nodeStates\":[],\"cloudResourceMappings\":[{\"cloudFamily\":\"Amazon\",\"nodeStates\":[\"NodeReady\",\"NodeStarted\",\"NodeSuspended\"]},{\"cloudFamily\":\"Openstack\",\"nodeStates\":[\"NodeReady\",\"NodeStarted\",\"NodeSuspended\"]},{\"cloudFamily\":\"Vmware\",\"nodeStates\":[\"NodeReady\",\"NodeStarted\",\"NodeSuspended\"]},{\"cloudFamily\":\"SoftLayer\",\"nodeStates\":[\"NodeReady\",\"NodeStarted\",\"NodeSuspended\"]},{\"cloudFamily\":\"Google\",\"nodeStates\":[\"NodeReady\",\"NodeStarted\",\"NodeSuspended\"]},{\"cloudFamily\":\"Vcd\",\"nodeStates\":[\"NodeReady\",\"NodeStarted\",\"NodeSuspended\"]},{\"cloudFamily\":\"AzureRM\",\"nodeStates\":[\"NodeReady\",\"NodeStarted\",\"NodeSuspended\"]},{\"cloudFamily\":\"AzureStack\",\"nodeStates\":[\"NodeReady\",\"NodeStarted\",\"NodeSuspended\"]},{\"cloudFamily\":\"Opsource\",\"nodeStates\":[\"NodeReady\",\"NodeStarted\",\"NodeSuspended\"]},{\"cloudFamily\":\"AzurePack\",\"nodeStates\":[\"NodeReady\",\"NodeStarted\",\"NodeSuspended\"]}]},\"isEditable\":true}]}],\"actionResourceMappingAncillaries\":[],\"actionCustomParamSpecs\":[]},{\"id\":\"6\",\"resource\":null,\"name\":\"Detach Volume\",\"description\":\"detach volume\",\"actionType\":\"INSTANCE_DETACH_VOLUME\",\"category\":\"ON_DEMAND\",\"lastUpdatedTime\":\"\",\"timeOut\":600,\"enabled\":true,\"encrypted\":false,\"deleted\":false,\"systemDefined\":true,\"bulkOperationSupported\":false,\"isAvailableToUser\":true,\"currentlyExecuting\":false,\"owner\":1,\"actionParameters\":[],\"actionResourceMappings\":[{\"type\":\"VIRTUAL_MACHINE\",\"actionResourceFilters\":[{\"cloudRegionResource\":null,\"serviceResource\":null,\"applicationProfileResource\":null,\"deploymentResource\":null,\"vmResource\":{\"type\":\"DEPLOYMENT_VM\",\"appProfiles\":[],\"cloudRegions\":[],\"cloudAccounts\":[],\"services\":[],\"osTypes\":[],\"cloudFamilyNames\":[],\"nodeStates\":[],\"cloudResourceMappings\":[{\"cloudFamily\":\"Amazon\",\"nodeStates\":[\"NodeReady\",\"NodeStarted\",\"NodeSuspended\"]},{\"cloudFamily\":\"Openstack\",\"nodeStates\":[\"NodeReady\",\"NodeStarted\",\"NodeSuspended\"]},{\"cloudFamily\":\"Vmware\",\"nodeStates\":[\"NodeReady\",\"NodeStarted\",\"NodeSuspended\"]},{\"cloudFamily\":\"SoftLayer\",\"nodeStates\":[\"NodeReady\",\"NodeStarted\",\"NodeSuspended\"]},{\"cloudFamily\":\"Google\",\"nodeStates\":[\"NodeReady\",\"NodeStarted\",\"NodeSuspended\"]},{\"cloudFamily\":\"Vcd\",\"nodeStates\":[\"NodeReady\",\"NodeStarted\",\"NodeSuspended\"]},{\"cloudFamily\":\"AzureRM\",\"nodeStates\":[\"NodeReady\",\"NodeStarted\",\"NodeSuspended\"]},{\"cloudFamily\":\"AzureStack\",\"nodeStates\":[\"NodeReady\",\"NodeStarted\",\"NodeSuspended\"]},{\"cloudFamily\":\"Opsource\",\"nodeStates\":[\"NodeReady\",\"NodeStarted\",\"NodeSuspended\"]},{\"cloudFamily\":\"AzurePack\",\"nodeStates\":[\"NodeReady\",\"NodeStarted\",\"NodeSuspended\"]}]},\"isEditable\":true}]}],\"actionResourceMappingAncillaries\":[],\"actionCustomParamSpecs\":[]},{\"id\":\"3\",\"resource\":null,\"name\":\"Reboot\",\"description\":\"reboot the instance\",\"actionType\":\"INSTANCE_REBOOT\",\"category\":\"ON_DEMAND\",\"lastUpdatedTime\":\"\",\"timeOut\":600,\"enabled\":true,\"encrypted\":false,\"deleted\":false,\"systemDefined\":true,\"bulkOperationSupported\":true,\"isAvailableToUser\":true,\"currentlyExecuting\":false,\"owner\":1,\"actionParameters\":[],\"actionResourceMappings\":[{\"type\":\"VIRTUAL_MACHINE\",\"actionResourceFilters\":[{\"cloudRegionResource\":null,\"serviceResource\":null,\"applicationProfileResource\":null,\"deploymentResource\":null,\"vmResource\":{\"type\":\"DEPLOYMENT_VM\",\"appProfiles\":[],\"cloudRegions\":[],\"cloudAccounts\":[],\"services\":[],\"osTypes\":[],\"cloudFamilyNames\":[],\"nodeStates\":[],\"cloudResourceMappings\":[{\"cloudFamily\":\"all\",\"nodeStates\":[\"NodeReady\",\"NodeStarted\",\"NodeNotReachable\"]}]},\"isEditable\":true}]}],\"actionResourceMappingAncillaries\":[],\"actionCustomParamSpecs\":[]},{\"id\":\"8\",\"resource\":null,\"name\":\"Resize Instance Type\",\"description\":\"reconfig instance\",\"actionType\":\"INSTANCE_RECONFIG\",\"category\":\"ON_DEMAND\",\"lastUpdatedTime\":\"\",\"timeOut\":600,\"enabled\":true,\"encrypted\":false,\"deleted\":false,\"systemDefined\":true,\"bulkOperationSupported\":false,\"isAvailableToUser\":true,\"currentlyExecuting\":false,\"owner\":1,\"actionParameters\":[],\"actionResourceMappings\":[{\"type\":\"VIRTUAL_MACHINE\",\"actionResourceFilters\":[{\"cloudRegionResource\":null,\"serviceResource\":null,\"applicationProfileResource\":null,\"deploymentResource\":null,\"vmResource\":{\"type\":\"DEPLOYMENT_VM\",\"appProfiles\":[],\"cloudRegions\":[],\"cloudAccounts\":[],\"services\":[],\"osTypes\":[],\"cloudFamilyNames\":[],\"nodeStates\":[],\"cloudResourceMappings\":[{\"cloudFamily\":\"Amazon\",\"nodeStates\":[\"NodeSuspended\",\"NodeReady\",\"NodeStarted\"]},{\"cloudFamily\":\"Openstack\",\"nodeStates\":[\"NodeReady\",\"NodeStarted\",\"NodeSuspended\"]},{\"cloudFamily\":\"Vmware\",\"nodeStates\":[\"NodeSuspended\",\"NodeReady\",\"NodeStarted\"]},{\"cloudFamily\":\"AzureRM\",\"nodeStates\":[\"NodeSuspended\",\"NodeReady\",\"NodeStarted\"]},{\"cloudFamily\":\"AzureStack\",\"nodeStates\":[\"NodeSuspended\",\"NodeReady\",\"NodeStarted\"]},{\"cloudFamily\":\"Opsource\",\"nodeStates\":[\"NodeReady\",\"NodeStarted\",\"NodeSuspended\"]},{\"cloudFamily\":\"Google\",\"nodeStates\":[\"NodeSuspended\",\"NodeReady\",\"NodeStarted\"]}]},\"isEditable\":true}]}],\"actionResourceMappingAncillaries\":[],\"actionCustomParamSpecs\":[]},{\"id\":\"1\",\"resource\":null,\"name\":\"Stop\",\"description\":\"stop the instance\",\"actionType\":\"INSTANCE_STOP\",\"category\":\"ON_DEMAND\",\"lastUpdatedTime\":\"\",\"timeOut\":600,\"enabled\":true,\"encrypted\":false,\"deleted\":false,\"systemDefined\":true,\"bulkOperationSupported\":true,\"isAvailableToUser\":true,\"currentlyExecuting\":false,\"owner\":1,\"actionParameters\":[],\"actionResourceMappings\":[{\"type\":\"VIRTUAL_MACHINE\",\"actionResourceFilters\":[{\"cloudRegionResource\":null,\"serviceResource\":null,\"applicationProfileResource\":null,\"deploymentResource\":null,\"vmResource\":{\"type\":\"DEPLOYMENT_VM\",\"appProfiles\":[],\"cloudRegions\":[],\"cloudAccounts\":[],\"services\":[],\"osTypes\":[],\"cloudFamilyNames\":[],\"nodeStates\":[],\"cloudResourceMappings\":[{\"cloudFamily\":\"all\",\"nodeStates\":[\"NodeReady\",\"NodeStarted\"]}]},\"isEditable\":true}]}],\"actionResourceMappingAncillaries\":[],\"actionCustomParamSpecs\":[]},{\"id\":\"12\",\"resource\":null,\"name\":\"Sync VM Information\",\"description\":\"Sync VM Information from the Cloud\",\"actionType\":\"REFRESH_VM\",\"category\":\"ON_DEMAND\",\"lastUpdatedTime\":\"\",\"timeOut\":600,\"enabled\":true,\"encrypted\":false,\"deleted\":false,\"systemDefined\":true,\"bulkOperationSupported\":true,\"isAvailableToUser\":true,\"currentlyExecuting\":false,\"owner\":1,\"actionParameters\":[],\"actionResourceMappings\":[{\"type\":\"VIRTUAL_MACHINE\",\"actionResourceFilters\":[{\"cloudRegionResource\":null,\"serviceResource\":null,\"applicationProfileResource\":null,\"deploymentResource\":null,\"vmResource\":{\"type\":\"DEPLOYMENT_VM\",\"appProfiles\":[],\"cloudRegions\":[],\"cloudAccounts\":[],\"services\":[],\"osTypes\":[],\"cloudFamilyNames\":[],\"nodeStates\":[],\"cloudResourceMappings\":[{\"cloudFamily\":\"Amazon\",\"nodeStates\":[\"NodeStarting\",\"NodeStarted\",\"NodeReady\",\"NodeCleaned\",\"NodeError\",\"NodeNotReachable\",\"NodeReachable\",\"NodeSuspended\",\"NodeSuspending\",\"NodeResuming\",\"NodeResumed\",\"NodeRebooted\"]},{\"cloudFamily\":\"Openstack\",\"nodeStates\":[\"NodeStarting\",\"NodeStarted\",\"NodeReady\",\"NodeCleaned\",\"NodeError\",\"NodeNotReachable\",\"NodeReachable\",\"NodeSuspended\",\"NodeSuspending\",\"NodeResuming\",\"NodeResumed\",\"NodeRebooted\"]},{\"cloudFamily\":\"Vmware\",\"nodeStates\":[\"NodeStarting\",\"NodeStarted\",\"NodeReady\",\"NodeCleaned\",\"NodeError\",\"NodeNotReachable\",\"NodeReachable\",\"NodeSuspended\",\"NodeSuspending\",\"NodeResuming\",\"NodeResumed\",\"NodeRebooted\"]},{\"cloudFamily\":\"Azure\",\"nodeStates\":[\"NodeStarting\",\"NodeStarted\",\"NodeReady\",\"NodeCleaned\",\"NodeError\",\"NodeNotReachable\",\"NodeReachable\",\"NodeSuspended\",\"NodeSuspending\",\"NodeResuming\",\"NodeResumed\",\"NodeRebooted\"]},{\"cloudFamily\":\"AzureRM\",\"nodeStates\":[\"NodeStarting\",\"NodeStarted\",\"NodeReady\",\"NodeCleaned\",\"NodeError\",\"NodeNotReachable\",\"NodeReachable\",\"NodeSuspended\",\"NodeSuspending\",\"NodeResuming\",\"NodeResumed\",\"NodeRebooted\"]},{\"cloudFamily\":\"AzurePack\",\"nodeStates\":[\"NodeStarting\",\"NodeStarted\",\"NodeReady\",\"NodeCleaned\",\"NodeError\",\"NodeNotReachable\",\"NodeReachable\",\"NodeSuspended\",\"NodeSuspending\",\"NodeResuming\",\"NodeResumed\",\"NodeRebooted\"]},{\"cloudFamily\":\"Vcd\",\"nodeStates\":[\"NodeStarting\",\"NodeStarted\",\"NodeReady\",\"NodeCleaned\",\"NodeError\",\"NodeNotReachable\",\"NodeReachable\",\"NodeSuspended\",\"NodeSuspending\",\"NodeResuming\",\"NodeResumed\",\"NodeRebooted\"]},{\"cloudFamily\":\"Google\",\"nodeStates\":[\"NodeStarting\",\"NodeStarted\",\"NodeReady\",\"NodeCleaned\",\"NodeError\",\"NodeNotReachable\",\"NodeReachable\",\"NodeSuspended\",\"NodeSuspending\",\"NodeResuming\",\"NodeResumed\",\"NodeRebooted\"]},{\"cloudFamily\":\"AzureStack\",\"nodeStates\":[\"NodeStarting\",\"NodeStarted\",\"NodeReady\",\"NodeCleaned\",\"NodeError\",\"NodeNotReachable\",\"NodeReachable\",\"NodeSuspended\",\"NodeSuspending\",\"NodeResuming\",\"NodeResumed\",\"NodeRebooted\"]},{\"cloudFamily\":\"SoftLayer\",\"nodeStates\":[\"NodeStarting\",\"NodeStarted\",\"NodeReady\",\"NodeCleaned\",\"NodeError\",\"NodeNotReachable\",\"NodeReachable\",\"NodeSuspended\",\"NodeSuspending\",\"NodeResuming\",\"NodeResumed\",\"NodeRebooted\"]},{\"cloudFamily\":\"Opsource\",\"nodeStates\":[\"NodeStarting\",\"NodeStarted\",\"NodeReady\",\"NodeCleaned\",\"NodeError\",\"NodeNotReachable\",\"NodeReachable\",\"NodeSuspended\",\"NodeSuspending\",\"NodeResuming\",\"NodeResumed\",\"NodeRebooted\"]}]},\"isEditable\":true}]}],\"actionResourceMappingAncillaries\":[],\"actionCustomParamSpecs\":[]},{\"id\":\"4\",\"resource\":null,\"name\":\"Terminate\",\"description\":\"terminate the instance\",\"actionType\":\"INSTANCE_TERMINATE\",\"category\":\"ON_DEMAND\",\"lastUpdatedTime\":\"\",\"timeOut\":600,\"enabled\":true,\"encrypted\":false,\"deleted\":false,\"systemDefined\":true,\"bulkOperationSupported\":true,\"isAvailableToUser\":true,\"currentlyExecuting\":false,\"owner\":1,\"actionParameters\":[],\"actionResourceMappings\":[{\"type\":\"VIRTUAL_MACHINE\",\"actionResourceFilters\":[{\"cloudRegionResource\":null,\"serviceResource\":null,\"applicationProfileResource\":null,\"deploymentResource\":null,\"vmResource\":{\"type\":\"DEPLOYMENT_VM\",\"appProfiles\":[],\"cloudRegions\":[],\"cloudAccounts\":[],\"services\":[],\"osTypes\":[],\"cloudFamilyNames\":[],\"nodeStates\":[],\"cloudResourceMappings\":[{\"cloudFamily\":\"all\",\"nodeStates\":[\"NodeReady\",\"NodeStarted\",\"NodeSuspended\",\"NodeError\",\"NodeNotReachable\",\"NodeNotFound\"]}]},\"isEditable\":true}]}],\"actionResourceMappingAncillaries\":[],\"actionCustomParamSpecs\":[]},{\"id\":\"57\",\"resource\":null,\"name\":\"On-Demand-command-On-VM\",\"description\":\"On-Demand-command-On-VM\",\"actionType\":\"EXECUTE_COMMAND\",\"category\":\"ON_DEMAND\",\"lastUpdatedTime\":\"2019-01-14 06:57:55.618\",\"timeOut\":1200,\"enabled\":true,\"encrypted\":false,\"deleted\":false,\"systemDefined\":false,\"bulkOperationSupported\":true,\"isAvailableToUser\":true,\"currentlyExecuting\":false,\"owner\":1,\"actionParameters\":[{\"paramName\":\"downloadFromBundle\",\"paramValue\":\"false\",\"customParam\":false,\"required\":true,\"useDefault\":false,\"preference\":\"VISIBLE_UNLOCKED\"},{\"paramName\":\"script\",\"paramValue\":\"touch /tmp/on-demand\",\"customParam\":false,\"required\":true,\"useDefault\":false,\"preference\":\"VISIBLE_UNLOCKED\"},{\"paramName\":\"executeOnContainer\",\"paramValue\":\"false\",\"customParam\":false,\"required\":true,\"useDefault\":false,\"preference\":\"VISIBLE_UNLOCKED\"},{\"paramName\":\"rebootInstance\",\"paramValue\":\"false\",\"customParam\":false,\"required\":true,\"useDefault\":false,\"preference\":\"VISIBLE_UNLOCKED\"},{\"paramName\":\"refreshInstanceInfo\",\"paramValue\":\"false\",\"customParam\":false,\"required\":true,\"useDefault\":false,\"preference\":\"VISIBLE_UNLOCKED\"}],\"actionResourceMappings\":[{\"type\":\"VIRTUAL_MACHINE\",\"actionResourceFilters\":[{\"cloudRegionResource\":null,\"serviceResource\":null,\"applicationProfileResource\":null,\"deploymentResource\":null,\"vmResource\":{\"type\":\"DEPLOYMENT_VM\",\"appProfiles\":[\"all\"],\"cloudRegions\":[\"all\"],\"cloudAccounts\":[\"all\"],\"services\":[\"all\"],\"osTypes\":[],\"cloudFamilyNames\":[],\"nodeStates\":[],\"cloudResourceMappings\":[]},\"isEditable\":true}]}],\"actionResourceMappingAncillaries\":[],\"actionCustomParamSpecs\":[]},{\"id\":\"109\",\"resource\":null,\"name\":\"ON-DEMAND-WORKFLOW-EXT\",\"description\":\"ON-DEMAND-WORKFLOW-EXT\",\"actionType\":\"AO_WORKFLOW\",\"category\":\"ON_DEMAND\",\"lastUpdatedTime\":\"2019-01-24 08:35:08.872\",\"timeOut\":1200,\"enabled\":true,\"encrypted\":false,\"deleted\":false,\"systemDefined\":false,\"bulkOperationSupported\":true,\"isAvailableToUser\":true,\"currentlyExecuting\":false,\"owner\":1,\"actionParameters\":[{\"paramName\":\"executeOnContainer\",\"paramValue\":\"true\",\"customParam\":false,\"required\":true,\"useDefault\":false,\"preference\":\"VISIBLE_UNLOCKED\"},{\"paramName\":\"rebootInstance\",\"paramValue\":\"false\",\"customParam\":false,\"required\":true,\"useDefault\":false,\"preference\":\"VISIBLE_UNLOCKED\"},{\"paramName\":\"refreshInstanceInfo\",\"paramValue\":\"false\",\"customParam\":false,\"required\":true,\"useDefault\":false,\"preference\":\"VISIBLE_UNLOCKED\"},{\"paramName\":\"aoWorkflowId\",\"paramValue\":\"01GvnANPi7FgpJNdqR9TXRWURgvK7ckcC\",\"customParam\":false,\"required\":true,\"useDefault\":false,\"preference\":\"VISIBLE_UNLOCKED\"},{\"paramName\":\"aoUniqueName\",\"paramValue\":\"definition_workflow_01GvnAnDNECXJql5onqg3PNZiMmIOlkoz\",\"customParam\":false,\"required\":true,\"useDefault\":false,\"preference\":\"VISIBLE_UNLOCKED\"},{\"paramName\":\"executeOnContainer\",\"paramValue\":\"true\",\"customParam\":false,\"required\":true,\"useDefault\":false,\"preference\":\"VISIBLE_UNLOCKED\"},{\"paramName\":\"rebootInstance\",\"paramValue\":\"false\",\"customParam\":false,\"required\":true,\"useDefault\":false,\"preference\":\"VISIBLE_UNLOCKED\"},{\"paramName\":\"refreshInstanceInfo\",\"paramValue\":\"false\",\"customParam\":false,\"required\":true,\"useDefault\":false,\"preference\":\"VISIBLE_UNLOCKED\"},{\"paramName\":\"aoWorkflowId\",\"paramValue\":\"01GvnANPi7FgpJNdqR9TXRWURgvK7ckcC\",\"customParam\":false,\"required\":true,\"useDefault\":false,\"preference\":\"VISIBLE_UNLOCKED\"},{\"paramName\":\"aoUniqueName\",\"paramValue\":\"definition_workflow_01GvnAnDNECXJql5onqg3PNZiMmIOlkoz\",\"customParam\":false,\"required\":true,\"useDefault\":false,\"preference\":\"VISIBLE_UNLOCKED\"}],\"actionResourceMappings\":[{\"type\":\"VIRTUAL_MACHINE\",\"actionResourceFilters\":[{\"cloudRegionResource\":null,\"serviceResource\":null,\"applicationProfileResource\":null,\"deploymentResource\":null,\"vmResource\":{\"type\":\"DEPLOYMENT_VM\",\"appProfiles\":[\"33\",\"37\",\"29\"],\"cloudRegions\":[\"2\",\"8\",\"9\",\"10\"],\"cloudAccounts\":[\"1\"],\"services\":[\"59\",\"31\",\"34\",\"6\",\"62\",\"51\",\"69\",\"70\",\"33\",\"43\",\"58\",\"46\",\"47\",\"2\",\"3\",\"5\",\"9\",\"11\",\"12\",\"17\",\"22\",\"7\",\"10\",\"15\",\"13\",\"16\",\"50\",\"57\",\"63\",\"30\",\"44\",\"45\",\"67\",\"65\",\"55\",\"66\",\"64\",\"14\",\"54\",\"8\"],\"osTypes\":[],\"cloudFamilyNames\":[],\"nodeStates\":[],\"cloudResourceMappings\":[]},\"isEditable\":true}]},{\"type\":\"VIRTUAL_MACHINE\",\"actionResourceFilters\":[{\"cloudRegionResource\":null,\"serviceResource\":null,\"applicationProfileResource\":null,\"deploymentResource\":null,\"vmResource\":{\"type\":\"IMPORTED_VM\",\"appProfiles\":[],\"cloudRegions\":[\"2\",\"8\",\"9\",\"10\"],\"cloudAccounts\":[\"1\"],\"services\":[],\"osTypes\":[\"linux\",\"windows\"],\"cloudFamilyNames\":[],\"nodeStates\":[],\"cloudResourceMappings\":[]},\"isEditable\":true}]}],\"actionResourceMappingAncillaries\":[],\"actionCustomParamSpecs\":[]},{\"id\":\"108\",\"resource\":null,\"name\":\"ON-DEMAND-WORKFLOW-VM\",\"description\":\"ON-DEMAND-WORKFLOW-VM\",\"actionType\":\"AO_WORKFLOW\",\"category\":\"ON_DEMAND\",\"lastUpdatedTime\":\"2019-01-24 08:33:53.559\",\"timeOut\":1200,\"enabled\":true,\"encrypted\":false,\"deleted\":false,\"systemDefined\":false,\"bulkOperationSupported\":true,\"isAvailableToUser\":true,\"currentlyExecuting\":false,\"owner\":1,\"actionParameters\":[{\"paramName\":\"executeOnContainer\",\"paramValue\":\"false\",\"customParam\":false,\"required\":true,\"useDefault\":false,\"preference\":\"VISIBLE_UNLOCKED\"},{\"paramName\":\"rebootInstance\",\"paramValue\":\"false\",\"customParam\":false,\"required\":true,\"useDefault\":false,\"preference\":\"VISIBLE_UNLOCKED\"},{\"paramName\":\"refreshInstanceInfo\",\"paramValue\":\"false\",\"customParam\":false,\"required\":true,\"useDefault\":false,\"preference\":\"VISIBLE_UNLOCKED\"},{\"paramName\":\"aoWorkflowId\",\"paramValue\":\"01GvNtzZ09RQLZBbzeZEXZNeFkJrIRkiI\",\"customParam\":false,\"required\":true,\"useDefault\":false,\"preference\":\"VISIBLE_UNLOCKED\"},{\"paramName\":\"aoUniqueName\",\"paramValue\":\"definition_workflow_01GvNU0mqgN3KmFIfiNUxh9qhBGSc4sKu\",\"customParam\":false,\"required\":true,\"useDefault\":false,\"preference\":\"VISIBLE_UNLOCKED\"},{\"paramName\":\"executeOnContainer\",\"paramValue\":\"false\",\"customParam\":false,\"required\":true,\"useDefault\":false,\"preference\":\"VISIBLE_UNLOCKED\"},{\"paramName\":\"rebootInstance\",\"paramValue\":\"false\",\"customParam\":false,\"required\":true,\"useDefault\":false,\"preference\":\"VISIBLE_UNLOCKED\"},{\"paramName\":\"refreshInstanceInfo\",\"paramValue\":\"false\",\"customParam\":false,\"required\":true,\"useDefault\":false,\"preference\":\"VISIBLE_UNLOCKED\"},{\"paramName\":\"aoWorkflowId\",\"paramValue\":\"01GvNtzZ09RQLZBbzeZEXZNeFkJrIRkiI\",\"customParam\":false,\"required\":true,\"useDefault\":false,\"preference\":\"VISIBLE_UNLOCKED\"},{\"paramName\":\"aoUniqueName\",\"paramValue\":\"definition_workflow_01GvNU0mqgN3KmFIfiNUxh9qhBGSc4sKu\",\"customParam\":false,\"required\":true,\"useDefault\":false,\"preference\":\"VISIBLE_UNLOCKED\"}],\"actionResourceMappings\":[{\"type\":\"VIRTUAL_MACHINE\",\"actionResourceFilters\":[{\"cloudRegionResource\":null,\"serviceResource\":null,\"applicationProfileResource\":null,\"deploymentResource\":null,\"vmResource\":{\"type\":\"DEPLOYMENT_VM\",\"appProfiles\":[\"33\",\"37\",\"29\"],\"cloudRegions\":[\"2\",\"8\",\"9\",\"10\"],\"cloudAccounts\":[\"1\"],\"services\":[\"59\",\"31\",\"34\",\"6\",\"62\",\"51\",\"69\",\"70\",\"33\",\"43\",\"58\",\"46\",\"47\",\"2\",\"3\",\"5\",\"9\",\"11\",\"12\",\"17\",\"22\",\"7\",\"10\",\"15\",\"13\",\"16\",\"50\",\"57\",\"63\",\"30\",\"44\",\"45\",\"67\",\"65\",\"55\",\"66\",\"64\",\"14\",\"54\",\"8\"],\"osTypes\":[],\"cloudFamilyNames\":[],\"nodeStates\":[],\"cloudResourceMappings\":[]},\"isEditable\":true}]},{\"type\":\"VIRTUAL_MACHINE\",\"actionResourceFilters\":[{\"cloudRegionResource\":null,\"serviceResource\":null,\"applicationProfileResource\":null,\"deploymentResource\":null,\"vmResource\":{\"type\":\"IMPORTED_VM\",\"appProfiles\":[],\"cloudRegions\":[\"2\",\"8\",\"9\",\"10\"],\"cloudAccounts\":[\"1\"],\"services\":[],\"osTypes\":[\"linux\",\"windows\"],\"cloudFamilyNames\":[],\"nodeStates\":[],\"cloudResourceMappings\":[]},\"isEditable\":true}]}],\"actionResourceMappingAncillaries\":[],\"actionCustomParamSpecs\":[]},{\"id\":\"84\",\"resource\":null,\"name\":\"Sample_01\",\"description\":\"\",\"actionType\":\"AO_WORKFLOW\",\"category\":\"ON_DEMAND\",\"lastUpdatedTime\":\"2019-01-22 08:17:29.407\",\"timeOut\":1200,\"enabled\":true,\"encrypted\":false,\"deleted\":false,\"systemDefined\":false,\"bulkOperationSupported\":true,\"isAvailableToUser\":true,\"currentlyExecuting\":false,\"owner\":1,\"actionParameters\":[{\"paramName\":\"executeOnContainer\",\"paramValue\":\"false\",\"customParam\":false,\"required\":true,\"useDefault\":false,\"preference\":\"VISIBLE_UNLOCKED\"},{\"paramName\":\"rebootInstance\",\"paramValue\":\"false\",\"customParam\":false,\"required\":true,\"useDefault\":false,\"preference\":\"VISIBLE_UNLOCKED\"},{\"paramName\":\"refreshInstanceInfo\",\"paramValue\":\"false\",\"customParam\":false,\"required\":true,\"useDefault\":false,\"preference\":\"VISIBLE_UNLOCKED\"},{\"paramName\":\"aoWorkflowId\",\"paramValue\":\"01g3w9y632H8glY3SQkCsk1ZbKvfbMuYH\",\"customParam\":false,\"required\":true,\"useDefault\":false,\"preference\":\"VISIBLE_UNLOCKED\"},{\"paramName\":\"aoUniqueName\",\"paramValue\":\"definition_workflow_01g3w9yOKcGec0ejmWxD7kdRbrDj0SB7L\",\"customParam\":false,\"required\":true,\"useDefault\":false,\"preference\":\"VISIBLE_UNLOCKED\"}],\"actionResourceMappings\":[{\"type\":\"VIRTUAL_MACHINE\",\"actionResourceFilters\":[{\"cloudRegionResource\":null,\"serviceResource\":null,\"applicationProfileResource\":null,\"deploymentResource\":null,\"vmResource\":{\"type\":\"DEPLOYMENT_VM\",\"appProfiles\":[\"33\",\"37\",\"29\"],\"cloudRegions\":[\"2\",\"8\",\"9\",\"10\"],\"cloudAccounts\":[\"1\"],\"services\":[\"59\",\"31\",\"34\",\"6\",\"62\",\"51\",\"69\",\"70\",\"33\",\"43\",\"58\",\"46\",\"47\",\"2\",\"3\",\"5\",\"9\",\"11\",\"12\",\"17\",\"22\",\"7\",\"10\",\"13\",\"15\",\"16\",\"50\",\"57\",\"63\",\"30\",\"44\",\"45\",\"67\",\"65\",\"55\",\"66\",\"64\",\"14\",\"54\",\"8\"],\"osTypes\":[],\"cloudFamilyNames\":[],\"nodeStates\":[],\"cloudResourceMappings\":[]},\"isEditable\":true}]}],\"actionResourceMappingAncillaries\":[],\"actionCustomParamSpecs\":[]},{\"id\":\"78\",\"resource\":null,\"name\":\"sridhar_testt\",\"description\":\"\",\"actionType\":\"EXECUTE_COMMAND\",\"category\":\"ON_DEMAND\",\"lastUpdatedTime\":\"2019-01-17 09:26:20.335\",\"timeOut\":1200,\"enabled\":true,\"encrypted\":false,\"deleted\":false,\"systemDefined\":false,\"bulkOperationSupported\":true,\"isAvailableToUser\":true,\"currentlyExecuting\":false,\"owner\":1,\"actionParameters\":[{\"paramName\":\"downloadFromBundle\",\"paramValue\":\"false\",\"customParam\":false,\"required\":true,\"useDefault\":false,\"preference\":\"VISIBLE_UNLOCKED\"},{\"paramName\":\"script\",\"paramValue\":\"touch /tmp/yes\",\"customParam\":false,\"required\":true,\"useDefault\":false,\"preference\":\"VISIBLE_UNLOCKED\"},{\"paramName\":\"executeOnContainer\",\"paramValue\":\"false\",\"customParam\":false,\"required\":true,\"useDefault\":false,\"preference\":\"VISIBLE_UNLOCKED\"},{\"paramName\":\"rebootInstance\",\"paramValue\":\"false\",\"customParam\":false,\"required\":true,\"useDefault\":false,\"preference\":\"VISIBLE_UNLOCKED\"},{\"paramName\":\"refreshInstanceInfo\",\"paramValue\":\"false\",\"customParam\":false,\"required\":true,\"useDefault\":false,\"preference\":\"VISIBLE_UNLOCKED\"}],\"actionResourceMappings\":[{\"type\":\"VIRTUAL_MACHINE\",\"actionResourceFilters\":[{\"cloudRegionResource\":null,\"serviceResource\":null,\"applicationProfileResource\":null,\"deploymentResource\":null,\"vmResource\":{\"type\":\"DEPLOYMENT_VM\",\"appProfiles\":[\"all\"],\"cloudRegions\":[\"all\"],\"cloudAccounts\":[\"all\"],\"services\":[\"all\"],\"osTypes\":[],\"cloudFamilyNames\":[],\"nodeStates\":[],\"cloudResourceMappings\":[]},\"isEditable\":true}]}],\"actionResourceMappingAncillaries\":[],\"actionCustomParamSpecs\":[]}],\"zones\":null,\"cloudNameAndAccountName\":\"Amazon Asia Pacific (Mumbai):Gaurav\",\"agentVersion\":\"5.0.0\",\"jobId\":\"96\",\"jobName\":\"CentOS_1\",\"jobStartTime\":1548779787280,\"jobEndTime\":0,\"parentJobId\":\"95\",\"parentJobName\":\"Centos_sanity\",\"parentJobStatus\":\"JobRunning\",\"benchmarkId\":0,\"deploymentEnvironmentId\":\"3\",\"deploymentEnvironmentName\":\"Default-No Approval\",\"appId\":\"33\",\"appName\":\"Centos\",\"appVersion\":\"7.x\",\"appLogoPath\":\"custom/assets/img/appLogo/37d39b7c-b3b9-4151-899a-b280b1640022.png\",\"serviceId\":\"43\",\"serviceName\":\"CentOS\",\"tags\":null,\"publicIpAddresses\":\"52.66.255.82\",\"privateIpAddresses\":\"172.31.0.8\",\"cloudCost\":0.0,\"nodeHours\":0.0,\"userFavorite\":false,\"recordTimestamp\":0,\"imageId\":\"21\",\"terminateProtection\":false,\"importedTime\":0,\"running\":true,\"runTime\":1548779832757,\"zoneInfo\":{\"zone\":\"ap-south-1b\",\"faultDomain\":null,\"updateDomain\":null},\"agingPolicy\":null,\"suspensionPolicy\":null,\"scalingPolicy\":null,\"securityProfile\":null,\"storage\":null,\"storageIp\":null,\"taskDetails\":[]}",
+          "scope": "input",
+          "name": "Get CloudCenter Context Response",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_014X6619VI3SX5ehjNqTiY1KUPwZn2Mq6Ft",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.integer",
+        "properties": {
+          "value": 10,
+          "scope": "input",
+          "name": "Counter",
+          "type": "datatype.integer"
+        },
+        "unique_name": "variable_workflow_014X6619VI7163TuAQAlJZKoTlwoEE0BHL5",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "null",
+          "scope": "input",
+          "name": "CC_RUN_ID",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_014X6619VI9GU4RmTRGjUnLyEFhq9gbzJhg",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "tabletype_01gmhoxrCBjzGHtG1A5P7TOAjFkwkyaBD",
+        "properties": {
+          "scope": "local",
+          "name": "Virtual Machine Table",
+          "type": "datatype.table"
+        },
+        "unique_name": "variable_workflow_014X6619VIBX909nvKl0x1dePlc1TojV8Xx",
+        "object_type": "variable_workflow"
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "atomic_group": "CloudCenter Suite",
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "display_name": "Execute Action on Virtual Machine",
+      "favorite": false,
+      "target": {
+        "target_type": "ccsuite.endpoint",
+        "specify_on_workflow_start": true
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_014X661H551H70LkVV23CWTHe3J88JiePcP",
+        "name": "Convert Json to Xml",
+        "title": "Convert Json to Xml",
+        "type": "core.json2xml",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Convert Json to Xml",
+          "input_json": "$workflow.definition_workflow_014X660DEVI7C7fONDDW7caVcas1eSI1SDX.input.variable_workflow_014X6619VI3SX5ehjNqTiY1KUPwZn2Mq6Ft$",
+          "replace_list": [
+            {
+              "replaced_string": "",
+              "replacement_string": ""
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_014X661OKND1E6rc4ZiPH4NeLkCRKSh61k6",
+        "name": "Find String",
+        "title": "check for virtualMachines Array",
+        "type": "core.find_string",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "check for virtualMachines Array",
+          "searched_string": "\u003cvirtualMachines\u003e",
+          "source": "$activity.definition_activity_014X661H551H70LkVV23CWTHe3J88JiePcP.output.output_xml$"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_014X661VD5V363ZVZd4dR3844BBEoyt9Dem",
+        "name": "Condition Block",
+        "title": "Condition Block",
+        "type": "logic.if_else",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Condition Block"
+        },
+        "object_type": "definition_activity",
+        "blocks": [
+          {
+            "unique_name": "definition_activity_014X66213LPID3D3a77pzQcSN1bMAcw49QX",
+            "name": "Condition Branch",
+            "title": "WF Type = ondemand",
+            "type": "logic.condition_block",
+            "base_type": "activity",
+            "properties": {
+              "condition": {
+                "left_operand": "$activity.definition_activity_014X661OKND1E6rc4ZiPH4NeLkCRKSh61k6.output.has_match$",
+                "operator": "ne",
+                "right_operand": true
+              },
+              "continue_on_failure": false,
+              "display_name": "WF Type = ondemand"
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_014X662846HQ41KmEBfobPVLyrnRIEaoHpJ",
+                "name": "Add Row to Table",
+                "title": "Add VM to Table",
+                "type": "core.addrowtotable",
+                "base_type": "activity",
+                "properties": {
+                  "Id": "$workflow.definition_workflow_014X660DEVI7C7fONDDW7caVcas1eSI1SDX.input.variable_workflow_014X6619VI9GU4RmTRGjUnLyEFhq9gbzJhg$",
+                  "action_timeout": 180,
+                  "continue_on_failure": false,
+                  "display_name": "Add VM to Table",
+                  "input_table": "$workflow.definition_workflow_014X660DEVI7C7fONDDW7caVcas1eSI1SDX.local.variable_workflow_014X6619VIBX909nvKl0x1dePlc1TojV8Xx$",
+                  "row": [
+                    {
+                      "key": "Id",
+                      "type": "string",
+                      "value": "$workflow.definition_workflow_014X660DEVI7C7fONDDW7caVcas1eSI1SDX.input.variable_workflow_014X6619VI9GU4RmTRGjUnLyEFhq9gbzJhg$"
+                    }
+                  ]
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          },
+          {
+            "unique_name": "definition_activity_014X662F39UPG4VwRg77vvFidpU2QctNU6R",
+            "name": "Condition Branch",
+            "title": "WF Type = lifecycle",
+            "type": "logic.condition_block",
+            "base_type": "activity",
+            "properties": {
+              "condition": {
+                "left_operand": "$activity.definition_activity_014X661OKND1E6rc4ZiPH4NeLkCRKSh61k6.output.has_match$",
+                "operator": "eq",
+                "right_operand": true
+              },
+              "continue_on_failure": false,
+              "display_name": "WF Type = lifecycle"
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_014X662NK0K5D4yCYRws9lGMDuDcxSX0oCK",
+                "name": "Read Table from JSON",
+                "title": "Read Virtual Machines",
+                "type": "corejava.read_table_from_json",
+                "base_type": "activity",
+                "properties": {
+                  "action_timeout": 180,
+                  "continue_on_failure": false,
+                  "display_name": "Read Virtual Machines",
+                  "input_json": "$workflow.definition_workflow_014X660DEVI7C7fONDDW7caVcas1eSI1SDX.input.variable_workflow_014X6619VI3SX5ehjNqTiY1KUPwZn2Mq6Ft$",
+                  "jsonpath_query": "$.virtualMachines",
+                  "persist_output": false,
+                  "populate_columns": false,
+                  "table_columns": [
+                    {
+                      "column_name": "virtualMachineId",
+                      "column_type": "string",
+                      "zdate_type_format": ""
+                    }
+                  ]
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_014X662VE6DKP6yHswEPmWqA1pNv7b9XBPd",
+                "name": "For Each",
+                "title": "For Each VM",
+                "type": "logic.for_each",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "For Each VM",
+                  "source_array": "$activity.definition_activity_014X662NK0K5D4yCYRws9lGMDuDcxSX0oCK.output.read_table_from_json$"
+                },
+                "object_type": "definition_activity",
+                "actions": [
+                  {
+                    "unique_name": "definition_activity_014X66357UCUI6fYJ8HycpPS9FeGcsJcAnl",
+                    "name": "Add Row to Table",
+                    "title": "Add VM to Table",
+                    "type": "core.addrowtotable",
+                    "base_type": "activity",
+                    "properties": {
+                      "Id": "$activity.definition_activity_014X662VE6DKP6yHswEPmWqA1pNv7b9XBPd.input.source_array[@].virtualMachineId$",
+                      "action_timeout": 180,
+                      "continue_on_failure": false,
+                      "display_name": "Add VM to Table",
+                      "input_table": "$workflow.definition_workflow_014X660DEVI7C7fONDDW7caVcas1eSI1SDX.local.variable_workflow_014X6619VIBX909nvKl0x1dePlc1TojV8Xx$",
+                      "row": [
+                        {
+                          "key": "Id",
+                          "type": "string",
+                          "value": "$activity.definition_activity_014X662VE6DKP6yHswEPmWqA1pNv7b9XBPd.input.source_array[@].virtualMachineId$"
+                        }
+                      ]
+                    },
+                    "object_type": "definition_activity"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_014X663DBIJ384NRet5jvlki6qFAtA8Fdzk",
+        "name": "For Each",
+        "title": "Execute Action on Each VM",
+        "type": "logic.for_each",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Execute Action on Each VM",
+          "source_array": "$workflow.definition_workflow_014X660DEVI7C7fONDDW7caVcas1eSI1SDX.local.variable_workflow_014X6619VIBX909nvKl0x1dePlc1TojV8Xx$"
+        },
+        "object_type": "definition_activity",
+        "actions": [
+          {
+            "unique_name": "definition_activity_014X663UG2OEX2WTh9TVYnSrW9NDHTSDs0b",
+            "name": "Generic CCS API Request",
+            "title": "Execute Action",
+            "type": "ccs.api_request",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "api_body": "{\n  \"resourceType\": \"VIRTUAL_MACHINE\",\n  \"executionSpecs\": [\n    {\n      \"name\": \"script\",\n      \"value\": \"$workflow.definition_workflow_014X660DEVI7C7fONDDW7caVcas1eSI1SDX.input.variable_workflow_014X6619VIEF15nOv19bLbjhZ3omnTT6xnR$\"\n    }\n  ],\n  \"executionResources\": [\n    {\n      \"id\": \"$activity.definition_activity_014X663DBIJ384NRet5jvlki6qFAtA8Fdzk.input.source_array[@].Id$\"\n    }\n  ]\n}",
+              "api_call_method": "POST",
+              "continue_on_failure": false,
+              "display_name": "Execute Action",
+              "relative_url": " /cloudcenter-ccm-backend/api/v1/ao_actions/executions",
+              "runtime_user": {
+                "override_target_runtime_user": false,
+                "target_default": true
+              },
+              "target": {
+                "override_workflow_target": false,
+                "use_workflow_target": true
+              }
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_014X6643DJ95A5xqU21Ws7p7DUBHEdKZll5",
+            "name": "Replace String",
+            "title": "Replace String",
+            "type": "core.replacestring",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Replace String",
+              "input_string": "$activity.definition_activity_014X663UG2OEX2WTh9TVYnSrW9NDHTSDs0b.output.response_body$",
+              "replace_list": [
+                {
+                  "replaced_string": "\"",
+                  "replacement_string": ""
+                }
+              ]
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_014X664AINSRO7SsbxU7clkf5b1VLP2ejdf",
+            "name": "While Loop",
+            "title": "While Loop",
+            "type": "logic.while",
+            "base_type": "activity",
+            "properties": {
+              "display_name": "While Loop"
+            },
+            "object_type": "definition_activity",
+            "blocks": [
+              {
+                "unique_name": "definition_activity_014X664FBZG6T0zoTziVBKZbJqIUWtxrkFs",
+                "name": "Condition Branch",
+                "title": "Counter \u003e 0",
+                "type": "logic.condition_block",
+                "base_type": "activity",
+                "properties": {
+                  "condition": {
+                    "left_operand": "$workflow.definition_workflow_014X660DEVI7C7fONDDW7caVcas1eSI1SDX.input.variable_workflow_014X6619VI7163TuAQAlJZKoTlwoEE0BHL5$",
+                    "operator": "gt",
+                    "right_operand": "0"
+                  },
+                  "continue_on_failure": false,
+                  "display_name": "Counter \u003e 0"
+                },
+                "object_type": "definition_activity",
+                "actions": [
+                  {
+                    "unique_name": "definition_activity_014X664OM3Y8R1N1P0FxMCHz43bQMVsctHM",
+                    "name": "Generic CCS API Request",
+                    "title": "Poll Action Status",
+                    "type": "ccs.api_request",
+                    "base_type": "activity",
+                    "properties": {
+                      "action_timeout": 180,
+                      "api_call_method": "GET",
+                      "continue_on_failure": false,
+                      "display_name": "Poll Action Status",
+                      "relative_url": " /cloudcenter-ccm-backend/api/v1/executions/status?resourceType=VIRTUAL_MACHINE\u0026id=$activity.definition_activity_014X663DBIJ384NRet5jvlki6qFAtA8Fdzk.input.source_array[@].Id$\u0026actionExecutionId=$activity.definition_activity_014X6643DJ95A5xqU21Ws7p7DUBHEdKZll5.output.result_string$",
+                      "runtime_user": {
+                        "override_target_runtime_user": false,
+                        "target_default": true
+                      },
+                      "target": {
+                        "use_workflow_target": true
+                      }
+                    },
+                    "object_type": "definition_activity"
+                  },
+                  {
+                    "unique_name": "definition_activity_014X664XZOCOV66O4IJvSUiPa7yHuhWEbK7",
+                    "name": "JSONPath Query",
+                    "title": "Query Status",
+                    "type": "corejava.jsonpathquery",
+                    "base_type": "activity",
+                    "properties": {
+                      "action_timeout": 180,
+                      "continue_on_failure": false,
+                      "display_name": "Query Status",
+                      "input_json": "$activity.definition_activity_014X664OM3Y8R1N1P0FxMCHz43bQMVsctHM.output.response_body$",
+                      "jsonpath_queries": [
+                        {
+                          "jsonpath_query": "$[0].status",
+                          "jsonpath_query_name": "status",
+                          "jsonpath_query_type": "string",
+                          "zdate_type_format": ""
+                        }
+                      ]
+                    },
+                    "object_type": "definition_activity"
+                  },
+                  {
+                    "unique_name": "definition_activity_014X6654QQZWS6xKDKbC0P55O5BJpODVyZn",
+                    "name": "Condition Block",
+                    "title": "Condition Block",
+                    "type": "logic.if_else",
+                    "base_type": "activity",
+                    "properties": {
+                      "display_name": "Condition Block"
+                    },
+                    "object_type": "definition_activity",
+                    "blocks": [
+                      {
+                        "unique_name": "definition_activity_014X6659M8V092g5aXth7PN7hepLcBJu7KS",
+                        "name": "Condition Branch",
+                        "title": "Status \u003c\u003e FAILED",
+                        "type": "logic.condition_block",
+                        "base_type": "activity",
+                        "properties": {
+                          "condition": {
+                            "left_operand": {
+                              "left_operand": "$activity.definition_activity_014X664XZOCOV66O4IJvSUiPa7yHuhWEbK7.output.jsonpath_queries.status$",
+                              "operator": "ne",
+                              "right_operand": "FAILED"
+                            },
+                            "operator": "and",
+                            "right_operand": {
+                              "left_operand": "$workflow.definition_workflow_014X660DEVI7C7fONDDW7caVcas1eSI1SDX.input.variable_workflow_014X6619VI7163TuAQAlJZKoTlwoEE0BHL5$",
+                              "operator": "gt",
+                              "right_operand": 0
+                            }
+                          },
+                          "continue_on_failure": false,
+                          "display_name": "Status \u003c\u003e FAILED"
+                        },
+                        "object_type": "definition_activity",
+                        "actions": [
+                          {
+                            "unique_name": "definition_activity_014X665GOBC5V28Zx6NcZHiBVB0e2eGmgYM",
+                            "name": "Set Variables",
+                            "title": "Decrement Counter",
+                            "type": "core.set_multiple_variables",
+                            "base_type": "activity",
+                            "properties": {
+                              "continue_on_failure": false,
+                              "display_name": "Decrement Counter",
+                              "variables_to_update": [
+                                {
+                                  "variable_to_update": "$workflow.definition_workflow_014X660DEVI7C7fONDDW7caVcas1eSI1SDX.input.variable_workflow_014X6619VI7163TuAQAlJZKoTlwoEE0BHL5$",
+                                  "variable_value_new": "$workflow.definition_workflow_014X660DEVI7C7fONDDW7caVcas1eSI1SDX.input.variable_workflow_014X6619VI7163TuAQAlJZKoTlwoEE0BHL5$-1"
+                                }
+                              ]
+                            },
+                            "object_type": "definition_activity"
+                          },
+                          {
+                            "unique_name": "definition_activity_014X665N1HLXX4FMONIPQgnGwJrmWgVf3vu",
+                            "name": "Sleep",
+                            "title": "Sleep",
+                            "type": "core.sleep",
+                            "base_type": "activity",
+                            "properties": {
+                              "continue_on_failure": false,
+                              "display_name": "Sleep",
+                              "sleep_interval": "$workflow.definition_workflow_014X660DEVI7C7fONDDW7caVcas1eSI1SDX.input.variable_workflow_014X6619VHWW06cgAGJIufCDHaGBd2JEZXI$"
+                            },
+                            "object_type": "definition_activity"
+                          }
+                        ]
+                      },
+                      {
+                        "unique_name": "definition_activity_014X665U00FGX2KQGp7BjTjoNY4oSG2Bshh",
+                        "name": "Condition Branch",
+                        "title": "Status == SUCCEEDED",
+                        "type": "logic.condition_block",
+                        "base_type": "activity",
+                        "properties": {
+                          "condition": {
+                            "left_operand": "$activity.definition_activity_014X664XZOCOV66O4IJvSUiPa7yHuhWEbK7.output.jsonpath_queries.status$",
+                            "operator": "eq",
+                            "right_operand": "SUCCEEDED"
+                          },
+                          "continue_on_failure": false,
+                          "display_name": "Status == SUCCEEDED"
+                        },
+                        "object_type": "definition_activity",
+                        "actions": [
+                          {
+                            "unique_name": "definition_activity_014X6660NH8K70yfYTIv5KvgkFPjuKQF6Ha",
+                            "name": "Break",
+                            "title": "Break",
+                            "type": "logic.break",
+                            "base_type": "activity",
+                            "properties": {
+                              "display_name": "Break"
+                            },
+                            "object_type": "definition_activity"
+                          }
+                        ]
+                      },
+                      {
+                        "unique_name": "definition_activity_014X6665FAPMD0R1nnAdDc1vpAPF5chBObT",
+                        "name": "Condition Branch",
+                        "title": "Status = Failed",
+                        "type": "logic.condition_block",
+                        "base_type": "activity",
+                        "properties": {
+                          "condition": {
+                            "left_operand": "$activity.definition_activity_014X664XZOCOV66O4IJvSUiPa7yHuhWEbK7.output.jsonpath_queries.status$",
+                            "operator": "eq",
+                            "right_operand": "FAILED"
+                          },
+                          "continue_on_failure": false,
+                          "display_name": "Status = Failed"
+                        },
+                        "object_type": "definition_activity",
+                        "actions": [
+                          {
+                            "unique_name": "definition_activity_014X666BCA3R17E747no4wQXJczGxB0HQPE",
+                            "name": "Failed",
+                            "title": "Succeeded",
+                            "type": "logic.completed",
+                            "base_type": "activity",
+                            "properties": {
+                              "completion_type": "failed-completed",
+                              "display_name": "Failed"
+                            },
+                            "object_type": "definition_activity"
+                          }
+                        ]
+                      },
+                      {
+                        "unique_name": "definition_activity_014X666G0TCHD1RBAaOj41iRQbXKM47MS4a",
+                        "name": "Condition Branch",
+                        "title": "Status = TIMEOUT",
+                        "type": "logic.condition_block",
+                        "base_type": "activity",
+                        "properties": {
+                          "condition": {
+                            "left_operand": "$activity.definition_activity_014X664XZOCOV66O4IJvSUiPa7yHuhWEbK7.output.jsonpath_queries.status$",
+                            "operator": "eq",
+                            "right_operand": "TIMEOUT"
+                          },
+                          "continue_on_failure": false,
+                          "display_name": "Status = TIMEOUT"
+                        },
+                        "object_type": "definition_activity",
+                        "actions": [
+                          {
+                            "unique_name": "definition_activity_014X666LSPCHF017mLupWr6J84gMYWscYaN",
+                            "name": "Failed",
+                            "title": "Succeeded",
+                            "type": "logic.completed",
+                            "base_type": "activity",
+                            "properties": {
+                              "completion_type": "failed-completed",
+                              "display_name": "Failed"
+                            },
+                            "object_type": "definition_activity"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "unique_name": "definition_activity_014X666QKBBME3yvmr8m2zEZ8m3gjo4WZvk",
+            "name": "Set Variables",
+            "title": "Reset Counter",
+            "type": "core.set_multiple_variables",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Reset Counter",
+              "variables_to_update": [
+                {
+                  "variable_to_update": "$workflow.definition_workflow_014X660DEVI7C7fONDDW7caVcas1eSI1SDX.input.variable_workflow_014X6619VI7163TuAQAlJZKoTlwoEE0BHL5$",
+                  "variable_value_new": 10
+                }
+              ]
+            },
+            "object_type": "definition_activity"
+          }
+        ]
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  },
+  "table_types": {
+    "tabletype_01gmhoxrCBjzGHtG1A5P7TOAjFkwkyaBD": {
+      "unique_name": "tabletype_01gmhoxrCBjzGHtG1A5P7TOAjFkwkyaBD",
+      "data_type": "datatype.tabletype",
+      "display_name": "CCS Virtual Machine",
+      "max_rows": 256,
+      "max_columns": 256,
+      "max_column_size": 1024,
+      "max_table_size": 26000,
+      "columns": [
+        {
+          "name": "Id",
+          "title": "Id",
+          "type": "string"
+        }
+      ],
+      "base_type": "datatype",
+      "object_type": "tabletype"
+    }
+  }
+}
