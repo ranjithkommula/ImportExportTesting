@@ -1,0 +1,330 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_0152NQN3P35EU2HkU5F7bPMJURdlynfwjLI",
+    "name": "WF_Refer_Child_Output",
+    "title": "WF_Refer_Child_Output",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "tabletype_0152NXU6S32I35HFBLVNktp3rUMFhIfWsnC",
+        "properties": {
+          "scope": "local",
+          "name": "Local_PSC_Table",
+          "type": "datatype.table"
+        },
+        "unique_name": "variable_workflow_0152NY0VHKKW94KjE6bgxMTjkTmzz67Fvg5",
+        "object_type": "variable_workflow"
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "display_name": "WF_Refer_Child_Output",
+      "favorite": false,
+      "target": {
+        "execute_on_target_group": false,
+        "execute_on_workflow_target": false,
+        "no_target": true,
+        "specify_on_workflow_start": false
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_0152NR3IB4C585r94UcEBVCNc3vx5fBKPS6",
+        "name": "WF_Child_OutputTable",
+        "title": "WF_Child_OutputTable",
+        "type": "workflow.sub_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "WF_Child_OutputTable",
+          "input": {},
+          "target": {
+            "override_workflow_target": true,
+            "target_id": "0152LDK2IS4HG2V2JPt7o1SufMjlAcAYxS1",
+            "target_type": "015272MYBQK2A5BPA52AnzpQFQSFcAoCnjv"
+          },
+          "workflow_id": "definition_workflow_0152NK8TSD8WX4J8PehIWbPCQmwIWUhlbxC"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_0152O0HD2UV4U4MqoDqDi7DWQkFtySf5Rmy",
+        "name": "Read Table from JSON",
+        "title": "Read Table from JSON",
+        "type": "corejava.read_table_from_json",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "continue_on_failure": false,
+          "display_name": "Read Table from JSON",
+          "input_json": "$activity.definition_activity_0152NR3IB4C585r94UcEBVCNc3vx5fBKPS6.output.variable_workflow_0152NQ1KDQ99P5WRg6WXOoLnzHnAJCEDhZu$",
+          "jsonpath_query": "$.services.service",
+          "persist_output": false,
+          "populate_columns": false,
+          "table_columns": [
+            {
+              "column_name": "serviceName",
+              "column_type": "string",
+              "zdate_type_format": ""
+            },
+            {
+              "column_name": "description",
+              "column_type": "string",
+              "zdate_type_format": ""
+            },
+            {
+              "column_name": "serviceId",
+              "column_type": "integer",
+              "zdate_type_format": ""
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_0152NS3210GQG5cFL1JpaDsE22Pk3vcGn3Y",
+        "name": "For Each",
+        "title": "For Each",
+        "type": "logic.for_each",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "For Each",
+          "source_array": "$activity.definition_activity_0152O0HD2UV4U4MqoDqDi7DWQkFtySf5Rmy.output.read_table_from_json$"
+        },
+        "object_type": "definition_activity",
+        "actions": [
+          {
+            "unique_name": "definition_activity_0152NY3W7PNPD0aSRZkBTjRl5v1gC7KSaQk",
+            "name": "Add Row to Table",
+            "title": "Add Row to Table",
+            "type": "core.addrowtotable",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "continue_on_failure": false,
+              "display_name": "Add Row to Table",
+              "input_table": "$workflow.definition_workflow_0152NQN3P35EU2HkU5F7bPMJURdlynfwjLI.local.variable_workflow_0152NY0VHKKW94KjE6bgxMTjkTmzz67Fvg5$",
+              "row": [
+                {
+                  "key": "ServiceID",
+                  "type": "integer",
+                  "value": "$activity.definition_activity_0152NS3210GQG5cFL1JpaDsE22Pk3vcGn3Y.input.source_array[@].serviceId$"
+                },
+                {
+                  "key": "ServiceName",
+                  "type": "string",
+                  "value": "$activity.definition_activity_0152NS3210GQG5cFL1JpaDsE22Pk3vcGn3Y.input.source_array[@].serviceName$"
+                },
+                {
+                  "key": "Description",
+                  "type": "string",
+                  "value": "$activity.definition_activity_0152NS3210GQG5cFL1JpaDsE22Pk3vcGn3Y.input.source_array[@].description$"
+                }
+              ]
+            },
+            "object_type": "definition_activity"
+          }
+        ]
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  },
+  "targets": {
+    "definition_target_0152LDK3B2GD61V4gEzkzXntP7kQZybBWuk": {
+      "unique_name": "definition_target_0152LDK3B2GD61V4gEzkzXntP7kQZybBWuk",
+      "name": "PSC_Target_97.65.232.172",
+      "title": "PSC_Target_97.65.232.172",
+      "type": "web-service.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "disable_certificate_validation": true,
+        "display_name": "PSC_Target_97.65.232.172",
+        "host": "97.65.232.172",
+        "no_runtime_user": true,
+        "protocol": "https"
+      }
+    }
+  },
+  "table_types": {
+    "tabletype_014WRWZBISCDK65pXKo0tcv63is6zo31VwA": {
+      "unique_name": "tabletype_014WRWZBISCDK65pXKo0tcv63is6zo31VwA",
+      "data_type": "datatype.tabletype",
+      "display_name": "Cicely Employee",
+      "max_rows": 256,
+      "max_columns": 256,
+      "max_column_size": 1024,
+      "max_table_size": 26000,
+      "columns": [
+        {
+          "name": "EmpID",
+          "title": "Emp ID",
+          "type": "integer"
+        },
+        {
+          "name": "EmpName",
+          "title": "Emp Name",
+          "type": "string"
+        }
+      ],
+      "base_type": "datatype",
+      "object_type": "tabletype"
+    },
+    "tabletype_0152NXU6S32I35HFBLVNktp3rUMFhIfWsnC": {
+      "unique_name": "tabletype_0152NXU6S32I35HFBLVNktp3rUMFhIfWsnC",
+      "data_type": "datatype.tabletype",
+      "display_name": "PSC_Service",
+      "max_rows": 256,
+      "max_columns": 256,
+      "max_column_size": 1024,
+      "max_table_size": 26000,
+      "columns": [
+        {
+          "name": "Description",
+          "title": "Description",
+          "type": "string"
+        },
+        {
+          "name": "ServiceID",
+          "title": "ServiceID",
+          "type": "integer"
+        },
+        {
+          "name": "ServiceName",
+          "title": "ServiceName",
+          "type": "string"
+        }
+      ],
+      "base_type": "datatype",
+      "object_type": "tabletype"
+    }
+  },
+  "subworkflows": [
+    {
+      "workflow": {
+        "unique_name": "definition_workflow_0152NK8TSD8WX4J8PehIWbPCQmwIWUhlbxC",
+        "name": "WF_Child_OutputTable",
+        "title": "WF_Child_OutputTable",
+        "type": "generic.workflow",
+        "base_type": "workflow",
+        "variables": [
+          {
+            "schema_id": "datatype.string",
+            "properties": {
+              "value": "",
+              "scope": "output",
+              "name": "Output_JSON_String",
+              "type": "datatype.string"
+            },
+            "unique_name": "variable_workflow_0152NQ1KDQ99P5WRg6WXOoLnzHnAJCEDhZu",
+            "object_type": "variable_workflow"
+          },
+          {
+            "schema_id": "tabletype_014WRWZBISCDK65pXKo0tcv63is6zo31VwA",
+            "properties": {
+              "value": [
+                {
+                  "column_data": {
+                    "EmpID": 1,
+                    "EmpName": "PSC"
+                  }
+                },
+                {
+                  "column_data": {
+                    "EmpID": 2,
+                    "EmpName": "LH"
+                  }
+                }
+              ],
+              "scope": "output",
+              "name": "Child_Output_Table",
+              "type": "datatype.table"
+            },
+            "unique_name": "variable_workflow_0152NM6EFXH5Q4hpHI6YiuRYqDDzMHxxCme",
+            "object_type": "variable_workflow"
+          }
+        ],
+        "properties": {
+          "atomic": {
+            "is_atomic": false
+          },
+          "delete_workflow_instance": false,
+          "display_name": "WF_Child_OutputTable",
+          "favorite": false,
+          "target": {
+            "target_type": "web-service.endpoint",
+            "specify_on_workflow_start": true
+          }
+        },
+        "object_type": "definition_workflow",
+        "actions": [
+          {
+            "unique_name": "definition_activity_0152NOVQHVRZQ1N8zVaixiF3iIX1EVjYNA4",
+            "name": "HTTP Request",
+            "title": "HTTP Request",
+            "type": "web-service.http_request",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "allow_auto_redirect": true,
+              "content_type": "application/json",
+              "continue_on_error_status_code": false,
+              "continue_on_failure": false,
+              "custom_headers": [
+                {
+                  "name": "username",
+                  "value": "admin"
+                },
+                {
+                  "name": "password",
+                  "value": "admin"
+                }
+              ],
+              "display_name": "HTTP Request",
+              "method": "GET",
+              "relative_url": "/RequestCenter/nsapi/definition/servicedefs/?search=Apple\u0026only=true\u0026searchFrom=ServiceCatalog_Home\u0026responseType=json",
+              "runtime_user": {
+                "override_target_runtime_user": false,
+                "target_default": true
+              },
+              "target": {
+                "override_workflow_target": true,
+                "target_id": "definition_target_0152LDK3B2GD61V4gEzkzXntP7kQZybBWuk"
+              }
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_0152NQ4CJJJGF6kInmMdbyXcZtkAaaeieiF",
+            "name": "Set Variables",
+            "title": "Set Variables",
+            "type": "core.set_multiple_variables",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Set Variables",
+              "variables_to_update": [
+                {
+                  "variable_to_update": "$workflow.definition_workflow_0152NK8TSD8WX4J8PehIWbPCQmwIWUhlbxC.output.variable_workflow_0152NQ1KDQ99P5WRg6WXOoLnzHnAJCEDhZu$",
+                  "variable_value_new": "$activity.definition_activity_0152NOVQHVRZQ1N8zVaixiF3iIX1EVjYNA4.output.response_body$"
+                }
+              ]
+            },
+            "object_type": "definition_activity"
+          }
+        ],
+        "categories": [
+          "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+        ]
+      }
+    }
+  ]
+}
