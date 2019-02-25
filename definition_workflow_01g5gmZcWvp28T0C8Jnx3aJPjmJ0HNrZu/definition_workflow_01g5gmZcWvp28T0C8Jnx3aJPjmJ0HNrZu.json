@@ -9,17 +9,6 @@
       {
         "schema_id": "datatype.string",
         "properties": {
-          "value": "",
-          "scope": "output",
-          "name": "WF_ID",
-          "type": "datatype.string"
-        },
-        "unique_name": "variable_workflow_01g5gNefiCVgnKZPV4wPygTyrghW2x3Wh",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
           "value": "on_demand",
           "scope": "input",
           "name": "AVAILABILITY_TYPE",
@@ -61,6 +50,17 @@
           "type": "datatype.string"
         },
         "unique_name": "variable_workflow_01g5gNefiAHY9sWaUfDHisu8NdUBJ2FMa",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "output",
+          "name": "WF_ID",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01g5gNefiCVgnKZPV4wPygTyrghW2x3Wh",
         "object_type": "variable_workflow"
       }
     ],
