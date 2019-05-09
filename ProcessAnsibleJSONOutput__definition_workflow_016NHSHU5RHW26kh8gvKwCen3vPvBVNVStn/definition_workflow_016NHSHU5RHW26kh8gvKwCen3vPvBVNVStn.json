@@ -1,0 +1,460 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_016NHSHU5RHW26kh8gvKwCen3vPvBVNVStn",
+    "name": "Process Ansible JSON Output - Device",
+    "title": "Process Ansible JSON Output - Device",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "sdcc-idf1-2",
+          "scope": "input",
+          "name": "DeviceName",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_016NUX0BEUA875cIF93nH5Hekzl8zzySe9q",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "SQLstatements",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_016NVE566BDBL5rjgSLXRmiIGEZBVgGqZ4U",
+        "object_type": "variable_workflow"
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "display_name": "Process Ansible JSON Output - Device",
+      "favorite": false,
+      "target": {
+        "execute_on_target_group": false,
+        "execute_on_workflow_target": false,
+        "no_target": true,
+        "specify_on_workflow_start": false
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_016NHSW95BT602LlDJExjFkUbGCc7d8K4Gm",
+        "name": "Execute Linux/Unix SSH Command",
+        "title": "Execute Linux/Unix SSH Command",
+        "type": "terminal.ssh_command",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "command": "cat /opt/ansible/out/$workflow.definition_workflow_016NHSHU5RHW26kh8gvKwCen3vPvBVNVStn.input.variable_workflow_016NUX0BEUA875cIF93nH5Hekzl8zzySe9q$_iosfacts.json",
+          "command_timeout": 60,
+          "continue_on_failure": false,
+          "display_name": "Execute Linux/Unix SSH Command",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "target": {
+            "override_workflow_target": true,
+            "target_id": "definition_target_016NHEIKW7NKF4Zm9Um2DdqElDpbZa4igjG"
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_016NHTFO34F4N2btuBNIoXdXfV19xkkhcNU",
+        "name": "JSONPath Query",
+        "title": "JSONPath Query",
+        "type": "corejava.jsonpathquery",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "continue_on_failure": false,
+          "display_name": "JSONPath Query",
+          "input_json": "$activity.definition_activity_016NHSW95BT602LlDJExjFkUbGCc7d8K4Gm.output.response_body$",
+          "jsonpath_queries": [
+            {
+              "jsonpath_query": "$.ansible_facts.ansible_net_all_ipv4_addresses[0]",
+              "jsonpath_query_name": "MgmtIPAddress",
+              "jsonpath_query_type": "string",
+              "zdate_type_format": ""
+            },
+            {
+              "jsonpath_query": "$.ansible_facts.ansible_net_hostname",
+              "jsonpath_query_name": "Hostname",
+              "jsonpath_query_type": "string",
+              "zdate_type_format": ""
+            },
+            {
+              "jsonpath_query": "$.ansible_facts.ansible_net_memfree_mb",
+              "jsonpath_query_name": "Freemem",
+              "jsonpath_query_type": "integer",
+              "zdate_type_format": ""
+            },
+            {
+              "jsonpath_query": "$.ansible_facts.ansible_net_memtotal_mb",
+              "jsonpath_query_name": "totalmem",
+              "jsonpath_query_type": "integer",
+              "zdate_type_format": ""
+            },
+            {
+              "jsonpath_query": "$.ansible_facts.ansible_net_model",
+              "jsonpath_query_name": "Model",
+              "jsonpath_query_type": "string",
+              "zdate_type_format": ""
+            },
+            {
+              "jsonpath_query": "$.ansible_facts.ansible_net_serialnum",
+              "jsonpath_query_name": "SerialNumber",
+              "jsonpath_query_type": "string",
+              "zdate_type_format": ""
+            },
+            {
+              "jsonpath_query": "$.ansible_facts.ansible_net_version",
+              "jsonpath_query_name": "SoftwareVersion",
+              "jsonpath_query_type": "string",
+              "zdate_type_format": ""
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_016NVLGQDB9L02gq10CmReOifd25uRSpgBN",
+        "name": "Set Variables",
+        "title": "Set SQLstatements",
+        "type": "core.set_multiple_variables",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Set SQLstatements",
+          "variables_to_update": [
+            {
+              "variable_to_update": "$workflow.definition_workflow_016NHSHU5RHW26kh8gvKwCen3vPvBVNVStn.local.variable_workflow_016NVE566BDBL5rjgSLXRmiIGEZBVgGqZ4U$",
+              "variable_value_new": "DELETE FROM DEVICES WHERE Hostname = '$activity.definition_activity_016NHTFO34F4N2btuBNIoXdXfV19xkkhcNU.output.jsonpath_queries.Hostname$';\nDELETE FROM INTERFACES WHERE Hostname = '$activity.definition_activity_016NHTFO34F4N2btuBNIoXdXfV19xkkhcNU.output.jsonpath_queries.Hostname$';\nINSERT INTO DEVICES (Hostname,MgmtIPAddress,SerialNum,Model,SoftwareVersion,Location,FreeMem,MemTotal) VALUES ('$activity.definition_activity_016NHTFO34F4N2btuBNIoXdXfV19xkkhcNU.output.jsonpath_queries.Hostname$','$activity.definition_activity_016NHTFO34F4N2btuBNIoXdXfV19xkkhcNU.output.jsonpath_queries.MgmtIPAddress$','$activity.definition_activity_016NHTFO34F4N2btuBNIoXdXfV19xkkhcNU.output.jsonpath_queries.SerialNumber$','$activity.definition_activity_016NHTFO34F4N2btuBNIoXdXfV19xkkhcNU.output.jsonpath_queries.Model$','$activity.definition_activity_016NHTFO34F4N2btuBNIoXdXfV19xkkhcNU.output.jsonpath_queries.SoftwareVersion$','',$activity.definition_activity_016NHTFO34F4N2btuBNIoXdXfV19xkkhcNU.output.jsonpath_queries.Freemem$,$activity.definition_activity_016NHTFO34F4N2btuBNIoXdXfV19xkkhcNU.output.jsonpath_queries.totalmem$);"
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_017177MBOLPF75DsmTJggCpGT2rp4XZjJDb",
+        "name": "Condition Block",
+        "title": "Condition Block",
+        "type": "logic.if_else",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Condition Block"
+        },
+        "object_type": "definition_activity",
+        "blocks": [
+          {
+            "unique_name": "definition_activity_017177MD01HUK23iac1PtE1Gkygt1izuT51",
+            "name": "Condition Branch",
+            "title": "Skip",
+            "type": "logic.condition_block",
+            "base_type": "activity",
+            "properties": {
+              "condition": {
+                "left_operand": "$activity.definition_activity_016NVLGQDB9L02gq10CmReOifd25uRSpgBN.output.succeeded$",
+                "operator": "eq",
+                "right_operand": true
+              },
+              "continue_on_failure": false,
+              "display_name": "Skip"
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_016NQAI6QU4IY6zquRSnE1fvJjHYNaHLqDI",
+                "name": "Execute Python Script",
+                "title": "Execute Python Script",
+                "type": "python3.script",
+                "base_type": "activity",
+                "properties": {
+                  "action_timeout": 180,
+                  "continue_on_failure": false,
+                  "display_name": "Execute Python Script",
+                  "script": "import json\njsonString = '''\n$activity.definition_activity_016NHSW95BT602LlDJExjFkUbGCc7d8K4Gm.output.response_body$\n'''\njsonload = json.loads(jsonString)\noutput = list(jsonload[\"ansible_facts\"][\"ansible_net_interfaces\"].keys())",
+                  "script_queries": [
+                    {
+                      "script_query": "output",
+                      "script_query_name": "output",
+                      "script_query_type": "string"
+                    }
+                  ]
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_016NTSZN3MAPA3Awl39kF74F6zbShvXTNwg",
+                "name": "Replace String",
+                "title": "Replace String",
+                "type": "core.replacestring",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "Replace String",
+                  "input_string": "$activity.definition_activity_016NQAI6QU4IY6zquRSnE1fvJjHYNaHLqDI.output.script_queries.output$",
+                  "replace_list": [
+                    {
+                      "replaced_string": "[",
+                      "replacement_string": ""
+                    },
+                    {
+                      "replaced_string": "]",
+                      "replacement_string": ""
+                    },
+                    {
+                      "replaced_string": " 'Load',",
+                      "replacement_string": ""
+                    },
+                    {
+                      "replaced_string": "'Time',",
+                      "replacement_string": ""
+                    },
+                    {
+                      "replaced_string": "'",
+                      "replacement_string": ""
+                    },
+                    {
+                      "replaced_string": " ",
+                      "replacement_string": ""
+                    }
+                  ]
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_016NTUC3H81FU0Xz612NjBRpQDoXsEM2UWh",
+                "name": "Split String",
+                "title": "Split String",
+                "type": "core.splitstring",
+                "base_type": "activity",
+                "properties": {
+                  "boundaries": [
+                    {
+                      "boundary": ","
+                    }
+                  ],
+                  "continue_on_failure": false,
+                  "display_name": "Split String",
+                  "input_string": "$activity.definition_activity_016NTSZN3MAPA3Awl39kF74F6zbShvXTNwg.output.result_string$"
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_016NTPGQKUYO26abpSZiipRMaLtx5idtFj3",
+                "name": "For Each",
+                "title": "For Each",
+                "type": "logic.for_each",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "For Each",
+                  "source_array": "$activity.definition_activity_016NTUC3H81FU0Xz612NjBRpQDoXsEM2UWh.output.parts$"
+                },
+                "object_type": "definition_activity",
+                "actions": [
+                  {
+                    "unique_name": "definition_activity_016O9TZMZB4QC0GkEBFgpWz8vtImI6aEXyF",
+                    "name": "Condition Block",
+                    "title": "Type of Int",
+                    "type": "logic.if_else",
+                    "base_type": "activity",
+                    "properties": {
+                      "continue_on_failure": false,
+                      "display_name": "Type of Int"
+                    },
+                    "object_type": "definition_activity",
+                    "blocks": [
+                      {
+                        "unique_name": "definition_activity_016O9TZOQKX906yqpGoMIv193SvJ1unM2cQ",
+                        "name": "Condition Branch",
+                        "title": "Standard Int",
+                        "type": "logic.condition_block",
+                        "base_type": "activity",
+                        "properties": {
+                          "condition": {
+                            "left_operand": "$activity.definition_activity_016NTPGQKUYO26abpSZiipRMaLtx5idtFj3.input.source_array[@]$",
+                            "operator": "ne",
+                            "right_operand": ""
+                          },
+                          "continue_on_failure": false,
+                          "display_name": "Standard Int"
+                        },
+                        "object_type": "definition_activity",
+                        "actions": [
+                          {
+                            "unique_name": "definition_activity_016NIE8V5O3A01fgjkQMIU77pGTtVnu8v54",
+                            "name": "JSONPath Query",
+                            "title": "JSONPath Query 2",
+                            "type": "corejava.jsonpathquery",
+                            "base_type": "activity",
+                            "properties": {
+                              "action_timeout": 180,
+                              "continue_on_failure": false,
+                              "display_name": "JSONPath Query 2",
+                              "input_json": "$activity.definition_activity_016NHSW95BT602LlDJExjFkUbGCc7d8K4Gm.output.response_body$",
+                              "jsonpath_queries": [
+                                {
+                                  "jsonpath_query": "$['ansible_facts']['ansible_net_interfaces']['$activity.definition_activity_016NTPGQKUYO26abpSZiipRMaLtx5idtFj3.input.source_array[@]$']['bandwidth']",
+                                  "jsonpath_query_name": "bandwidth",
+                                  "jsonpath_query_type": "string",
+                                  "zdate_type_format": ""
+                                },
+                                {
+                                  "jsonpath_query": "$['ansible_facts']['ansible_net_interfaces']['$activity.definition_activity_016NTPGQKUYO26abpSZiipRMaLtx5idtFj3.input.source_array[@]$']['description']",
+                                  "jsonpath_query_name": "description",
+                                  "jsonpath_query_type": "string",
+                                  "zdate_type_format": ""
+                                },
+                                {
+                                  "jsonpath_query": "$['ansible_facts']['ansible_net_interfaces']['$activity.definition_activity_016NTPGQKUYO26abpSZiipRMaLtx5idtFj3.input.source_array[@]$']['duplex']",
+                                  "jsonpath_query_name": "duplex",
+                                  "jsonpath_query_type": "string",
+                                  "zdate_type_format": ""
+                                },
+                                {
+                                  "jsonpath_query": "$['ansible_facts']['ansible_net_interfaces']['$activity.definition_activity_016NTPGQKUYO26abpSZiipRMaLtx5idtFj3.input.source_array[@]$']['lineprotocol']",
+                                  "jsonpath_query_name": "lineprotocol",
+                                  "jsonpath_query_type": "string",
+                                  "zdate_type_format": ""
+                                },
+                                {
+                                  "jsonpath_query": "$['ansible_facts']['ansible_net_interfaces']['$activity.definition_activity_016NTPGQKUYO26abpSZiipRMaLtx5idtFj3.input.source_array[@]$']['macaddress']",
+                                  "jsonpath_query_name": "macaddress",
+                                  "jsonpath_query_type": "string",
+                                  "zdate_type_format": ""
+                                },
+                                {
+                                  "jsonpath_query": "$['ansible_facts']['ansible_net_interfaces']['$activity.definition_activity_016NTPGQKUYO26abpSZiipRMaLtx5idtFj3.input.source_array[@]$']['mediatype']",
+                                  "jsonpath_query_name": "mediatype",
+                                  "jsonpath_query_type": "string",
+                                  "zdate_type_format": ""
+                                },
+                                {
+                                  "jsonpath_query": "$['ansible_facts']['ansible_net_interfaces']['$activity.definition_activity_016NTPGQKUYO26abpSZiipRMaLtx5idtFj3.input.source_array[@]$']['mtu']",
+                                  "jsonpath_query_name": "mtu",
+                                  "jsonpath_query_type": "string",
+                                  "zdate_type_format": ""
+                                },
+                                {
+                                  "jsonpath_query": "$['ansible_facts']['ansible_net_interfaces']['$activity.definition_activity_016NTPGQKUYO26abpSZiipRMaLtx5idtFj3.input.source_array[@]$']['operstatus']",
+                                  "jsonpath_query_name": "operstatus",
+                                  "jsonpath_query_type": "string",
+                                  "zdate_type_format": ""
+                                },
+                                {
+                                  "jsonpath_query": "$['ansible_facts']['ansible_net_interfaces']['$activity.definition_activity_016NTPGQKUYO26abpSZiipRMaLtx5idtFj3.input.source_array[@]$']['type']",
+                                  "jsonpath_query_name": "type",
+                                  "jsonpath_query_type": "string",
+                                  "zdate_type_format": ""
+                                }
+                              ]
+                            },
+                            "object_type": "definition_activity"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_016O8YZ78G7QO0PmhBjaxI3fEJk2Wt0eiNd",
+        "name": "Write File",
+        "title": "Write File",
+        "type": "terminal.write_file",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "content": "$workflow.definition_workflow_016NHSHU5RHW26kh8gvKwCen3vPvBVNVStn.local.variable_workflow_016NVE566BDBL5rjgSLXRmiIGEZBVgGqZ4U$",
+          "continue_on_failure": false,
+          "display_name": "Write File",
+          "encoding": "utf-8",
+          "file_name": "/opt/SQL/$workflow.definition_workflow_016NHSHU5RHW26kh8gvKwCen3vPvBVNVStn.input.variable_workflow_016NUX0BEUA875cIF93nH5Hekzl8zzySe9q$.sql",
+          "options": "overwrite",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "target": {
+            "override_workflow_target": true,
+            "target_id": "definition_target_016NHEIKW7NKF4Zm9Um2DdqElDpbZa4igjG"
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_016O95ENW8A301LJn8GnXewkISGMmdlYft3",
+        "name": "Execute Linux/Unix SSH Command",
+        "title": "Execute Linux/Unix SSH Command",
+        "type": "terminal.ssh_command",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "command": "mysql -u CLNOCDBU CLNOC \u003c /opt/SQL/$workflow.definition_workflow_016NHSHU5RHW26kh8gvKwCen3vPvBVNVStn.input.variable_workflow_016NUX0BEUA875cIF93nH5Hekzl8zzySe9q$.sql",
+          "command_timeout": 60,
+          "continue_on_failure": false,
+          "display_name": "Execute Linux/Unix SSH Command",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "target": {
+            "override_workflow_target": true,
+            "target_id": "definition_target_016NHEIKW7NKF4Zm9Um2DdqElDpbZa4igjG"
+          }
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  },
+  "targets": {
+    "definition_target_016NHEIKW7NKF4Zm9Um2DdqElDpbZa4igjG": {
+      "unique_name": "definition_target_016NHEIKW7NKF4Zm9Um2DdqElDpbZa4igjG",
+      "name": "clnoc-otto",
+      "title": "clnoc-otto",
+      "type": "terminal.unix_linux_endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "bash_shell": "/bin/bash",
+        "default_runtime_user_id": "definition_runtime_user_016NHE6CXVO7K0MyvaOLzjNSZOI5LKYJF9m",
+        "description": "CLNOC Main automation CentOS VM",
+        "display_name": "clnoc-otto",
+        "host": "63.231.220.60",
+        "port": 22
+      }
+    }
+  },
+  "runtime_users": {
+    "definition_runtime_user_016NHE6CXVO7K0MyvaOLzjNSZOI5LKYJF9m": {
+      "unique_name": "definition_runtime_user_016NHE6CXVO7K0MyvaOLzjNSZOI5LKYJF9m",
+      "name": "otto",
+      "title": "otto",
+      "type": "runtime_user.terminal_password_credentials",
+      "base_type": "runtime_user",
+      "object_type": "definition_runtime_user",
+      "properties": {
+        "display_name": "otto"
+      }
+    }
+  }
+}
