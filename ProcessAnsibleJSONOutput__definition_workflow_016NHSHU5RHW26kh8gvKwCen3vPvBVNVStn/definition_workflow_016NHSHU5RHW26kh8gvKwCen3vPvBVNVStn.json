@@ -439,7 +439,7 @@
         "default_runtime_user_id": "definition_runtime_user_016NHE6CXVO7K0MyvaOLzjNSZOI5LKYJF9m",
         "description": "CLNOC Main automation CentOS VM",
         "display_name": "clnoc-otto",
-        "host": "63.231.220.60",
+        "host": "sjc-cent59-rac1.tidalsoft.local",
         "port": 22
       }
     }
