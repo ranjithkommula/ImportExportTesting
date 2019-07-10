@@ -1,0 +1,57 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_018IPV126UBA92TJ7EgkEq5qSCHJRkoWjCm",
+    "name": "Query Object",
+    "title": "Query Object",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": null,
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "display_name": "Query Object",
+      "favorite": false,
+      "runtime_user": {
+        "override_target_runtime_user": false,
+        "specify_on_workflow_start": false,
+        "target_default": true
+      },
+      "target": {
+        "execute_on_target_group": false,
+        "execute_on_workflow_target": false,
+        "no_target": true,
+        "specify_on_workflow_start": false
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_018IPV9GKAMZ71cYAw1p8dYdxoy2UPzn80G",
+        "name": "Query Object",
+        "title": "Query Object",
+        "type": "task.query_object",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "continue_on_failure": false,
+          "criteria": {
+            "left_operand": "$eventtype.approval_task event.output.task_owner$",
+            "operator": "eq",
+            "right_operand": "abc"
+          },
+          "display_name": "Query Object",
+          "query_object": {
+            "query_event": true,
+            "event_type": "approval_task.event"
+          }
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  }
+}
